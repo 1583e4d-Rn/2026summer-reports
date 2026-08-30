@@ -1,0 +1,17 @@
+\section{感悟}
+通过第一周的实验练习，形成以下认识和体会：
+\begin{itemize}
+\item Shell 管道组合的有效性：利用 awk、sort、uniq、head 等工具构建管道，仅需数行命令即可完成日志文件的统计与分析。
+\item Shell 脚本的健壮性设计：在编写 analyze.sh 的过程中，除实现核心功能外，还需对参数数量、文件存在性等边界条件进行检查。
+\item Git 分支合并冲突的处理：冲突产生的根本原因在于不同分支对同一文件的同一区域进行了修改。解决冲突的关键在于理解各分支修改的意图，并据此做出合理选择。
+\item LaTeX 交叉引用的编译要求：初次编译 LaTeX 文档时，交叉引用显示为 ?? 是因为引用信息需要在多次编译后才能正确解析。采用 latexmk 工具可自动化该流程。
+\end{itemize}
+
+Shell 负责文件操作与文本处理，Git 实施版本管理，LaTeX 完成报告排版。三者协同使用所形成的工具链，其整体效率增益显著超过各工具功能的简单叠加，体现了系统性工程方法的价值。
+
+\subsection*{Github提交}
+此处上传Github提交记录。(报告于完成后上传)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{git}
+\end{figure}

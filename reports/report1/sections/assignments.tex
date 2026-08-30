@@ -1,0 +1,270 @@
+\section{实验内容}
+
+\subsection{含空格文件名的批量整理}
+本题要求如下：
+\begin{itemize}
+    \item 创建 input/docs 和 input/tmp；创建 input/docs/notes one.txt（内容为 alpha 和 beta 两行）、input/docs/.secret.txt（内容为 hidden）、input/tmp/empty.txt（空文件）以及 input/run.log（任意两行日志）。
+    \item 显示 q01 的绝对路径，并以长格式列出 input 下全部项目，包含隐藏文件。
+    \item 把 input 下所有.txt 文件复制到 work/<学号>/，保留相对目录结构并正确处理名称中的空格。
+    \item 将复制后的目录权限设为 750、普通文件权限设为 640；生成 inventory.txt，列出相对路径和字节数。
+\end{itemize}
+
+\subsubsection*{递归创建目录结构}
+使用 \texttt{mkdir -p} 一次性建立 q01/input/docs 和 q01/input/tmp。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+mkdir -p q01/input/{docs,tmp}
+\end{minted}
+
+\subsubsection*{创建含内容文件与空文件}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+echo -e "alpha\nbeta" > q01/input/docs/notesone.txt
+echo "hidden" > q01/input/docs/secret.txt
+touch q01/input/tmp/empty.txt
+echo -e "log1\nlog2" > q01/input/run.log
+\end{minted}
+
+\subsubsection*{显示绝对路径与长格式列表}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+cd q01
+pwd
+ls -la input/
+\end{minted}
+
+\subsubsection*{安全复制所有 .txt 文件（处理空格）}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+STUDENT_ID=25020007136
+mkdir -p work/$STUDENT_ID
+find . -name "*.txt" -type f -exec cp --parents {} "../work/$STUDENT_ID/" \;
+\end{minted}
+
+\subsubsection*{批量设置目录和文件权限}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+cd work/$STUDENT_ID
+find . -type d -exec chmod 750 {} \;
+find . -type f -exec chmod 640 {} \;
+\end{minted}
+
+\subsubsection*{生成清单 inventory.txt（相对路径+字节数）}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+cd "work/$STUDENT_ID"
+find . -name "*.txt" -type f -printf "%P %s\n" > ../../inventory.txt
+\end{minted}
+
+运行效果如下：
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q01_0}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q01_1}
+\end{subfigure}
+\end{figure}
+
+\subsection{随机访问日志统计}
+
+\subsubsection*{编写 analyze.sh 脚本完成日志统计}
+本题要求编写一个 Shell 脚本 analyze.sh，功能如下：
+\begin{itemize}
+    \item 接受一个 CSV 文件路径作为唯一参数，文件不存在时输出错误到 stderr 并返回非零退出码。
+    \item 输出 HTTP 5xx 数量最多的前 2 个 path（按次数降序，若相同按字典序）。
+    \item 计算全部数据行的平均 latency\_ms（表头不计），保留两位小数。
+    \item 不得使用 Python、电子表格或手工统计。
+\end{itemize}
+
+脚本如下：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+#!/usr/bin/env bash
+
+# 检查参数个数是否为1
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <csv-file>" >&2
+    exit 1
+fi
+
+csv_file="$1"
+
+# 检查文件是否存在
+if [ ! -f "$csv_file" ]; then
+    echo "Error: File '$csv_file' not found" >&2
+    exit 1
+fi
+
+echo "Top 2 5xx paths:"
+
+grep -v '^timestamp' "$csv_file" \   # 去掉表头行
+
+    # 提取第4列（status）为5xx的，输出第3列（path）
+    | awk -F, '$4 >= 500 && $4 < 600 {print $3}' \
+
+    | sort \   # 排序以便 uniq 计数
+    | uniq -c \  # 统计每个 path 出现次数
+    | sort -k1,1nr -k2,2 \  # 先按次数降序，次数相同按 path 字典序
+    | head -2 \  # 取前两名
+    | awk '{print $2, $1}'  # 将输出格式调整为 "path 次数"
+
+# 计算平均延迟，跳过表头并保留两位小数
+avg=$(awk -F, 'NR > 1 {sum += $5; count++}
+    END {if (count) printf "%.2f", sum/count; else print "0"}' "$csv_file")
+echo "Average latency: $avg ms"
+\end{minted}
+
+\subsubsection*{运行脚本}
+使用题目给定的 access.csv 运行：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+chmod +x analyze.sh
+./analyze.sh access.csv
+\end{minted}
+
+输出如下：
+\begin{verbatim}
+Top 2 5xx paths:
+/api/users 3
+/api/orders 2
+Average latency: 193.75 ms
+\end{verbatim}
+
+对不存在的文件运行：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+./analyze.sh nonexistent.csv
+echo "Exit code: $?"
+\end{minted}
+
+输出（stderr）：
+\begin{verbatim}
+Error: File 'nonexistent.csv' not found
+Exit code: 1
+\end{verbatim}
+
+运行效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.63\linewidth]{q02}
+\end{figure}
+
+\subsection{制造、解决并解释一次合并冲突}
+本题要求主动制造、解决并解释一次合并冲突，详细如下：
+\begin{itemize}
+    \item 初始化仓库，在 main 创建 config.txt，内容为 mode=normal，并完成初始提交。
+    \item 创建 feature-a，把内容改为 mode=safe 并提交；从初始 main 创建 feature-b，把内容改为 mode=fast 并提交。
+    \item 回到 main，先合并 feature-a，再合并 feature-b；解决冲突时保留 mode=safe，并另加一行 note=reviewed。
+    \item 确认工作区干净，运行 git log --all --graph --decorate --oneline 查看历史。
+\end{itemize}
+
+\subsubsection*{初始化 Git 仓库并提交}
+首次提交前，需先设置姓名与邮件。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+mkdir -p q03 && cd q03
+git init
+echo "mode == normal" > config.txt
+git add config.txt
+git commit -m "Initial commit with normal mode declaration"
+\end{minted}
+
+\subsubsection*{签出两个分支并各自修改}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+git checkout -b feature-a
+echo "mode == safe" > config.txt
+git add config.txt
+git commit -m "Set feature a to safe mode"
+
+git checkout main
+git checkout -b feature-b
+echo "mode == fast" > config.txt
+git add config.txt
+git commit -m "Set feature b to fast mode"
+\end{minted}
+
+\subsubsection*{合并分支并解决冲突}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+git checkout main
+git merge feature-a   # 无冲突
+git merge feature-b   # 产生冲突
+# 手动编辑 config.txt，保留 "mode == safe" 并新增 "note == reviewed"
+git add config.txt
+git commit -m "Conflict solved"
+\end{minted}
+
+\subsubsection*{检查工作区并查看历史}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+git status
+git log --all --graph --decorate --oneline
+\end{minted}
+
+显示工作区干净，并输出提交历史。全部的输出如下：
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q03_0}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q03_1}
+\end{subfigure}
+\end{figure}
+
+\subsection{修复并构建一页技术说明}
+给定一段latex模板：
+\begin{minted}[frame=single, fontsize=\small]{latex}
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\title{Tool Report}
+\author{姓名—学号}
+\maketitle
+\section{Result}
+% 在此加入公式、表格及正文引用
+\end{document}
+\end{minted}
+要求：
+\begin{itemize}
+\item 加入一个带编号和 label 的公式，并在正文中使用 ref 或 eqref 引用。
+\item 加入一个 2 行 2 列表格，设置 caption 和 label，并在正文中引用该表。
+\item 使用 latexmk -pdf -halt-on-error 或 tectonic 生成 report.pdf。
+\item 确认 PDF 能打开，且交叉引用不显示“??”。
+\end{itemize}
+
+\subsubsection*{修改后代码}
+\begin{minted}[frame=single, fontsize=\small]{latex}
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[UTF8]{ctex}
+\begin{document}
+\title{Tool Report}
+\author{魏尚儒-25020007136}
+\maketitle
+
+\section{Result}
+
+% 引用
+公式~\eqref{eq:energy}
+表~\ref{tab:sample}
+
+% 公式（编号会自动生成，可用\tag{}手动添加）
+\begin{equation}
+E = m c^2 \label{eq:energy}
+\end{equation}
+
+% 2*2表格
+\begin{table}[h]
+\centering
+\caption{示例数据表}\label{tab:sample}
+\begin{tabular}{|c|c|}
+\hline
+项目 & 数值 \\
+\hline
+A & 1.23 \\
+B & 4.56 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
+\end{minted}
+
+预览效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q04}
+\end{figure}

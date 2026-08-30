@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }status
+git\PYG{+w}{ }log\PYG{+w}{ }\PYGZhy{}\PYGZhy{}all\PYG{+w}{ }\PYGZhy{}\PYGZhy{}graph\PYG{+w}{ }\PYGZhy{}\PYGZhy{}decorate\PYG{+w}{ }\PYGZhy{}\PYGZhy{}oneline
+\end{MintedVerbatim}

@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+./analyze.sh\PYG{+w}{ }nonexistent.csv
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Exit code: }\PYG{n+nv}{\PYGZdl{}?}\PYG{l+s+s2}{\PYGZdq{}}
+\end{MintedVerbatim}

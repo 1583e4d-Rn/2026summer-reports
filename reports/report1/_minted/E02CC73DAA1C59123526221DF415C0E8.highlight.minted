@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}work/}\PYG{n+nv}{\PYGZdl{}STUDENT\PYGZus{}ID}\PYG{l+s+s2}{\PYGZdq{}}
+find\PYG{+w}{ }.\PYG{+w}{ }\PYGZhy{}name\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}*.txt\PYGZdq{}}\PYG{+w}{ }\PYGZhy{}type\PYG{+w}{ }f\PYG{+w}{ }\PYGZhy{}printf\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}P \PYGZpc{}s\PYGZbs{}n\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }../../inventory.txt
+\end{MintedVerbatim}

@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+mkdir\PYG{+w}{ }\PYGZhy{}p\PYG{+w}{ }q03\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nb}{cd}\PYG{+w}{ }q03
+git\PYG{+w}{ }init
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}mode == normal\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }config.txt
+git\PYG{+w}{ }add\PYG{+w}{ }config.txt
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Initial commit with normal mode declaration\PYGZdq{}}
+\end{MintedVerbatim}

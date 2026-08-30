@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}documentclass}\PYG{n+nb}{\PYGZob{}}article\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}amsmath\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}title}\PYG{n+nb}{\PYGZob{}}Tool Report\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}author}\PYG{n+nb}{\PYGZob{}}姓名—学号\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}maketitle}
+\PYG{k}{\PYGZbs{}section}\PYG{n+nb}{\PYGZob{}}Result\PYG{n+nb}{\PYGZcb{}}
+\PYG{c}{\PYGZpc{} 在此加入公式、表格及正文引用}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\end{MintedVerbatim}

@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+chmod\PYG{+w}{ }+x\PYG{+w}{ }analyze.sh
+./analyze.sh\PYG{+w}{ }access.csv
+\end{MintedVerbatim}

@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+ssh\PYGZhy{}keygen\PYG{+w}{ }\PYGZhy{}t\PYG{+w}{ }RSA\PYG{+w}{ }\PYGZhy{}C\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}name@example.com\PYGZdq{}}
+\end{MintedVerbatim}

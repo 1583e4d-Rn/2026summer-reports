@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }checkout\PYG{+w}{ }main
+git\PYG{+w}{ }merge\PYG{+w}{ }feature\PYGZhy{}a\PYG{+w}{   }\PYG{c+c1}{\PYGZsh{} 无冲突}
+git\PYG{+w}{ }merge\PYG{+w}{ }feature\PYGZhy{}b\PYG{+w}{   }\PYG{c+c1}{\PYGZsh{} 产生冲突}
+\PYG{c+c1}{\PYGZsh{} 手动编辑 config.txt，保留 \PYGZdq{}mode == safe\PYGZdq{} 并新增 \PYGZdq{}note == reviewed\PYGZdq{}}
+git\PYG{+w}{ }add\PYG{+w}{ }config.txt
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Conflict solved\PYGZdq{}}
+\end{MintedVerbatim}

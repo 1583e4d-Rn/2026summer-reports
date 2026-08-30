@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nv}{STUDENT\PYGZus{}ID}\PYG{o}{=}\PYG{l+m}{25020007136}
+mkdir\PYG{+w}{ }\PYGZhy{}p\PYG{+w}{ }work/\PYG{n+nv}{\PYGZdl{}STUDENT\PYGZus{}ID}
+find\PYG{+w}{ }.\PYG{+w}{ }\PYGZhy{}name\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}*.txt\PYGZdq{}}\PYG{+w}{ }\PYGZhy{}type\PYG{+w}{ }f\PYG{+w}{ }\PYGZhy{}exec\PYG{+w}{ }cp\PYG{+w}{ }\PYGZhy{}\PYGZhy{}parents\PYG{+w}{ }\PYG{o}{\PYGZob{}\PYGZcb{}}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}../work/}\PYG{n+nv}{\PYGZdl{}STUDENT\PYGZus{}ID}\PYG{l+s+s2}{/\PYGZdq{}}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{};}
+\end{MintedVerbatim}

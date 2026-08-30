@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }checkout\PYG{+w}{ }\PYGZhy{}b\PYG{+w}{ }feature\PYGZhy{}a
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}mode == safe\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }config.txt
+git\PYG{+w}{ }add\PYG{+w}{ }config.txt
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Set feature a to safe mode\PYGZdq{}}
+
+git\PYG{+w}{ }checkout\PYG{+w}{ }main
+git\PYG{+w}{ }checkout\PYG{+w}{ }\PYGZhy{}b\PYG{+w}{ }feature\PYGZhy{}b
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}mode == fast\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }config.txt
+git\PYG{+w}{ }add\PYG{+w}{ }config.txt
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Set feature b to fast mode\PYGZdq{}}
+\end{MintedVerbatim}

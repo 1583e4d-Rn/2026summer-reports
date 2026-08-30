@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+sudo\PYG{+w}{ }mkdir\PYG{+w}{ }/mnt/part
+sudo\PYG{+w}{ }mount\PYG{+w}{ }/dev/nvme0n1p4\PYG{+w}{ }/mnt/part
+\PYG{n+nb}{cd}\PYG{+w}{ }/mnt/part
+\end{MintedVerbatim}

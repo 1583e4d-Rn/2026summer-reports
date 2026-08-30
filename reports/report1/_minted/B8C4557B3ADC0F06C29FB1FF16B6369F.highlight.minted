@@ -1,0 +1,36 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}documentclass}\PYG{n+nb}{\PYGZob{}}article\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}amsmath\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+na}{[UTF8]}\PYG{n+nb}{\PYGZob{}}ctex\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}title}\PYG{n+nb}{\PYGZob{}}Tool Report\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}author}\PYG{n+nb}{\PYGZob{}}魏尚儒\PYGZhy{}25020007136\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}maketitle}
+
+\PYG{k}{\PYGZbs{}section}\PYG{n+nb}{\PYGZob{}}Result\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{c}{\PYGZpc{} 引用}
+公式\PYGZti{}\PYG{k}{\PYGZbs{}eqref}\PYG{n+nb}{\PYGZob{}}eq:energy\PYG{n+nb}{\PYGZcb{}}
+表\PYGZti{}\PYG{k}{\PYGZbs{}ref}\PYG{n+nb}{\PYGZob{}}tab:sample\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{c}{\PYGZpc{} 公式（编号会自动生成，可用\PYGZbs{}tag\PYGZob{}\PYGZcb{}手动添加）}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}equation\PYG{n+nb}{\PYGZcb{}}
+E = m c\PYG{n+nb}{\PYGZca{}}2 \PYG{k}{\PYGZbs{}label}\PYG{n+nb}{\PYGZob{}}eq:energy\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}equation\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{c}{\PYGZpc{} 2*2表格}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}table\PYG{n+nb}{\PYGZcb{}}[h]
+\PYG{k}{\PYGZbs{}centering}
+\PYG{k}{\PYGZbs{}caption}\PYG{n+nb}{\PYGZob{}}示例数据表\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}label}\PYG{n+nb}{\PYGZob{}}tab:sample\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}\PYGZob{}}|c|c|\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}hline}
+项目 \PYG{n+nb}{\PYGZam{}} 数值 \PYG{k}{\PYGZbs{}\PYGZbs{}}
+\PYG{k}{\PYGZbs{}hline}
+A \PYG{n+nb}{\PYGZam{}} 1.23 \PYG{k}{\PYGZbs{}\PYGZbs{}}
+B \PYG{n+nb}{\PYGZam{}} 4.56 \PYG{k}{\PYGZbs{}\PYGZbs{}}
+\PYG{k}{\PYGZbs{}hline}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}table\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\end{MintedVerbatim}

@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYGZhy{}e\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}alpha\PYGZbs{}nbeta\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }q01/input/docs/notesone.txt
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}hidden\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }q01/input/docs/secret.txt
+touch\PYG{+w}{ }q01/input/tmp/empty.txt
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYGZhy{}e\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}log1\PYGZbs{}nlog2\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }q01/input/run.log
+\end{MintedVerbatim}

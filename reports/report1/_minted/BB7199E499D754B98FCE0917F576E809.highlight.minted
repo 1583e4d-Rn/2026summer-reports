@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}textbf}\PYG{n+nb}{\PYGZob{}}无序列表：\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}itemize\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}item} 第一个项目
+    \PYG{k}{\PYGZbs{}item} 第二个项目
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}itemize\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{k}{\PYGZbs{}textbf}\PYG{n+nb}{\PYGZob{}}有序列表：\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}enumerate\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}item} 第一步
+    \PYG{k}{\PYGZbs{}item} 第二步
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}enumerate\PYG{n+nb}{\PYGZcb{}}
+\end{MintedVerbatim}

@@ -1,0 +1,236 @@
+\section{课后练习}
+
+\subsection{Shell}
+\subsubsection{挂载硬盘分区}
+使用mkdir命令在/mnt下建立挂载点，再挂载指定的硬盘分区访问。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+sudo mkdir /mnt/part
+sudo mount /dev/nvme0n1p4 /mnt/part
+cd /mnt/part
+\end{minted}
+
+使用'ls -l'命令查看文件夹内容，可以看到成功挂载了此分区。
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.63\linewidth]{p1}
+\end{figure}
+
+\subsubsection{符号>与>>的区别}
+在使用echo命令写入文件时，若原文件存在，使用符号>会覆盖文件中的内容，而符号>>会直接在文件末尾追加新内容。
+
+下图显示了两种符号的区别。（不指定-n时，echo生成的文件每行末尾均带有换行符）
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{p2}
+\end{figure}
+
+\subsubsection{Shell语法中的部分符号}
+与其他语言不同，Shell语法（以Bash为例）的部分符号有其独特的用法。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+# 给变量赋值时，等号两边不能有空格（以下是正确的变量赋值方式）
+foo=bar
+echo $foo
+# 输出: bar
+
+# 错误的赋值方式（会被解析为命令）
+foo = bar
+# 输出: foo: command not found
+
+# 命令替换：将命令输出赋给变量
+current_date=$(date)
+echo "Today is $current_date"
+
+# 双引号：变量会被替换
+name="World"
+echo "Hello, $name!"
+# 输出: Hello, World!
+
+# 单引号：变量不会被替换（原义字符串）
+echo 'Hello, $name!'
+# 输出: Hello, $name!
+
+# 中括号需要与里面的内容用空格隔开
+if [ ! -f "$csv_file" ]; then
+    echo "Error: File '$csv_file' not found" >&2
+    exit 1
+fi
+# 若无空格，系统会将两个连续的符号识别为一个操作符，进而报错或执行额外操作
+\end{minted}
+
+\subsubsection{chmod的符号模式}
+除数字模式外，chmod还可使用符号模式，相较数字模式更便于理解。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+# 创建一个测试文件
+echo "test" > test.txt
+
+# 查看初始权限
+ls -l test.txt
+
+# 给所有用户添加执行权限
+chmod +x test.txt
+ls -l test.txt
+
+# 移除组和其他用户的写权限
+chmod go-w test.txt
+ls -l test.txt
+\end{minted}
+
+输出结果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{p4}
+\end{figure}
+
+\subsubsection{管道与grep配合实现快速查找}
+利用管道将输出较长的命令交给grep来查找，能够大幅提高查找效率。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+# 查找Nvidia驱动
+lsmod | grep nvidia
+
+# 检查SSH进程是否运行
+ps aux | grep sshd
+\end{minted}
+
+在查找驱动、服务或进程时，grep可显著缩短查找时间。运行结果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{p5}
+\end{figure}
+
+\subsection{Git相关}
+\subsubsection{使用SSH密钥简化推送步骤}
+使用 SSH 密钥可以避免每次推送时都输入用户名和密码，更安全便捷。
+
+以Github为例：
+
+\textbf{1. 生成SSH密钥}
+
+使用ssh-keygen命令生成一个SSH密钥（此处以RSA算法为例）。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+ssh-keygen -t RSA -C "name@example.com"
+\end{minted}
+
+生成的密钥默认会存储在\~/.ssh目录下。
+
+\textbf{2. 绑定SSH密钥}
+
+将生成的SSH密钥公钥绑定至Github账户（注意不可泄漏私钥）。
+
+打开\~/.ssh/id\_rsa.pub，复制其中的内容。登录Github并打开账户设置，选择“SSH and GPG keys”，单击“New SSH key”，输入名称并粘贴公钥，保存即可。
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{p6}
+\end{figure}
+
+这样，只需在关联远程仓库时，使用SSH链接，便可在推送时自动验证身份。
+
+\subsubsection{向远程仓库推送代码}
+仍以Github为例：
+
+\textbf{1. 克隆远程仓库}
+\begin{minted}[frame=single, fontsize=\small]{bash}
+# 使用SSH协议克隆仓库（需完成SSH密钥配置）
+git clone git@github.com:username/demo-repo.git
+\end{minted}
+
+\textbf{2. 关联远程仓库}
+
+将克隆的仓库与远程仓库关联。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+# 使用SSH协议（习惯上将远程仓库命名为origin）
+git remote add origin git@github.com:username/demo-repo.git
+\end{minted}
+
+\textbf{3. 进行本地操作}
+
+与本地仓库一样，可以进行签出分支、上传文件、提交与合并等操作。
+
+\textbf{4. 进行远程推送}
+
+本地操作完成后，将修改的文件推送到远程仓库。
+
+\begin{minted}[frame=single, fontsize=\small]{bash}
+git push origin
+\end{minted}
+
+若签出了新分支，或远程分支的名字和本地不一样，需加上参数-u(--set-upstream)来设置上游跟踪（建立本地分支与远程分支间的关联）。
+
+示例如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{p7}
+\end{figure}
+
+\subsection{Latex}
+\subsubsection{文档结构控制}
+使用特定的宏包，可实现文档结构控制。
+\begin{minted}[frame=single, fontsize=\small]{latex}
+% 设置页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 示例文本1}
+\fancyhead[R]{\small 示例文本2}
+\fancyfoot[C]{\thepage}
+
+% 设置页边距与纸张大小
+\usepackage[a4paper, margin=2.5cm]{geometry}
+
+
+% 目录生成（一般放在标题页或摘要后，正文开始前）
+\tableofcontents   % 在这里生成目录
+\newpage           % 目录独占一页，正文从下一页开始
+\end{minted}
+
+具体效果参考本报告。
+
+\subsubsection{创建无序列表与有序列表}
+
+在文档中创建列表，使文章层次结构清晰。
+\begin{minted}[frame=single, fontsize=\small]{latex}
+\textbf{无序列表：}
+\begin{itemize}
+    \item 第一个项目
+    \item 第二个项目
+\end{itemize}
+
+\textbf{有序列表：}
+\begin{enumerate}
+    \item 第一步
+    \item 第二步
+\end{enumerate}
+\end{minted}
+
+示例效果：
+\begin{minted}[frame=single, fontsize=\small]{latex}
+\textbf{无序列表：}
+\begin{itemize}
+    \item 第一个项目
+    \item 第二个项目
+\end{itemize}
+
+\textbf{有序列表：}
+\begin{enumerate}
+    \item 第一步
+    \item 第二步
+\end{enumerate}
+
+\subsubsection{插入图片}
+通常将图片放入浮动体figure中，以自动适配位置。
+\begin{minted}[frame=single, fontsize=\small]{latex}
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{{figures/}} % 假设图片在 figures 文件夹下
+
+\begin{document}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image} % 图片文件名（无需扩展名）
+    \caption{这是一个示例图片}
+    \label{fig:example}
+\end{figure}
+如图 \ref{fig:example} 所示。
+\end{document}
+\end{minted}
+
+具体效果参考本报告。

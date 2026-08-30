@@ -1,0 +1,30 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} 给变量赋值时，等号两边不能有空格（以下是正确的变量赋值方式）}
+\PYG{n+nv}{foo}\PYG{o}{=}bar
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}foo}
+\PYG{c+c1}{\PYGZsh{} 输出: bar}
+
+\PYG{c+c1}{\PYGZsh{} 错误的赋值方式（会被解析为命令）}
+\PYG{n+nv}{foo}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }bar
+\PYG{c+c1}{\PYGZsh{} 输出: foo: command not found}
+
+\PYG{c+c1}{\PYGZsh{} 命令替换：将命令输出赋给变量}
+\PYG{n+nv}{current\PYGZus{}date}\PYG{o}{=}\PYG{k}{\PYGZdl{}(}date\PYG{k}{)}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Today is }\PYG{n+nv}{\PYGZdl{}current\PYGZus{}date}\PYG{l+s+s2}{\PYGZdq{}}
+
+\PYG{c+c1}{\PYGZsh{} 双引号：变量会被替换}
+\PYG{n+nv}{name}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}World\PYGZdq{}}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Hello, }\PYG{n+nv}{\PYGZdl{}name}\PYG{l+s+s2}{!\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{} 输出: Hello, World!}
+
+\PYG{c+c1}{\PYGZsh{} 单引号：变量不会被替换（原义字符串）}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Hello, \PYGZdl{}name!\PYGZsq{}}
+\PYG{c+c1}{\PYGZsh{} 输出: Hello, \PYGZdl{}name!}
+
+\PYG{c+c1}{\PYGZsh{} 中括号需要与里面的内容用空格隔开}
+\PYG{k}{if}\PYG{+w}{ }\PYG{o}{[}\PYG{+w}{ }!\PYG{+w}{ }\PYGZhy{}f\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}csv\PYGZus{}file}\PYG{l+s+s2}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{then}
+\PYG{+w}{    }\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Error: File \PYGZsq{}}\PYG{n+nv}{\PYGZdl{}csv\PYGZus{}file}\PYG{l+s+s2}{\PYGZsq{} not found\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{p}{\PYGZam{}}\PYG{l+m}{2}
+\PYG{+w}{    }\PYG{n+nb}{exit}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{k}{fi}
+\PYG{c+c1}{\PYGZsh{} 若无空格，系统会将两个连续的符号识别为一个操作符，进而报错或执行额外操作}
+\end{MintedVerbatim}

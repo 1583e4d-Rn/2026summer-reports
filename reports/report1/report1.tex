@@ -1,0 +1,54 @@
+%! Tex program = xelatex
+\documentclass[12pt, a4paper]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\graphicspath{ {./graphs/} }
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 系统开发工具基础}
+\fancyhead[R]{\small 第一周实验报告}
+\fancyfoot[C]{\thepage}
+
+\usepackage[a4paper,includehead,includefoot]{geometry}
+
+
+
+\newcommand{\myname}{魏尚儒}
+\newcommand{\myid}{25020007136}
+\newcommand{\mygithub}{https://https://github.com/1583e4d-Rn/2026summer-reports}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \thispagestyle{empty}
+    {\Huge 系统开发工具基础}
+    \par
+    \vspace{1em}
+    {\Large 第一周实验报告}
+    \vfill
+    {\large 作者：\myname}
+    \par
+    {\large 学号：\myid}
+    \par
+    {\large 链接：\url{\mygithub}}
+    {\large \today}
+
+\end{titlepage}
+
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\input{sections/assignments}
+\input{sections/practices}
+\input{sections/other}
+
+\end{document}

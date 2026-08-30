@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} 查找Nvidia驱动}
+lsmod\PYG{+w}{ }\PYG{p}{|}\PYG{+w}{ }grep\PYG{+w}{ }nvidia
+
+\PYG{c+c1}{\PYGZsh{} 检查SSH进程是否运行}
+ps\PYG{+w}{ }aux\PYG{+w}{ }\PYG{p}{|}\PYG{+w}{ }grep\PYG{+w}{ }sshd
+\end{MintedVerbatim}

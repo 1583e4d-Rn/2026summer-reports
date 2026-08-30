@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }work/\PYG{n+nv}{\PYGZdl{}STUDENT\PYGZus{}ID}
+find\PYG{+w}{ }.\PYG{+w}{ }\PYGZhy{}type\PYG{+w}{ }d\PYG{+w}{ }\PYGZhy{}exec\PYG{+w}{ }chmod\PYG{+w}{ }\PYG{l+m}{750}\PYG{+w}{ }\PYG{o}{\PYGZob{}\PYGZcb{}}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{};}
+find\PYG{+w}{ }.\PYG{+w}{ }\PYGZhy{}type\PYG{+w}{ }f\PYG{+w}{ }\PYGZhy{}exec\PYG{+w}{ }chmod\PYG{+w}{ }\PYG{l+m}{640}\PYG{+w}{ }\PYG{o}{\PYGZob{}\PYGZcb{}}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{};}
+\end{MintedVerbatim}

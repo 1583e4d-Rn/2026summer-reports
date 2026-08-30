@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{} 设置页眉页脚}
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}fancyhdr\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}pagestyle}\PYG{n+nb}{\PYGZob{}}fancy\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}fancyhf}\PYG{n+nb}{\PYGZob{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}fancyhead}\PYG{n+na}{[L]}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}small} 示例文本1\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}fancyhead}\PYG{n+na}{[R]}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}small} 示例文本2\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}fancyfoot}\PYG{n+na}{[C]}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}thepage}\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{c}{\PYGZpc{} 设置页边距与纸张大小}
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+na}{[a4paper, margin=2.5cm]}\PYG{n+nb}{\PYGZob{}}geometry\PYG{n+nb}{\PYGZcb{}}
+
+
+\PYG{c}{\PYGZpc{} 目录生成（一般放在标题页或摘要后，正文开始前）}
+\PYG{k}{\PYGZbs{}tableofcontents}   \PYG{c}{\PYGZpc{} 在这里生成目录}
+\PYG{k}{\PYGZbs{}newpage}           \PYG{c}{\PYGZpc{} 目录独占一页，正文从下一页开始}
+\end{MintedVerbatim}

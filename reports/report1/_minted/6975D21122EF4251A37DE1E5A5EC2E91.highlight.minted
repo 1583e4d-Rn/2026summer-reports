@@ -1,0 +1,35 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env bash}
+
+\PYG{c+c1}{\PYGZsh{} 检查参数个数是否为1}
+\PYG{k}{if}\PYG{+w}{ }\PYG{o}{[}\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}\PYGZsh{}}\PYG{+w}{ }\PYGZhy{}ne\PYG{+w}{ }\PYG{l+m}{1}\PYG{+w}{ }\PYG{o}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{then}
+\PYG{+w}{    }\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Usage: }\PYG{n+nv}{\PYGZdl{}0}\PYG{l+s+s2}{ \PYGZlt{}csv\PYGZhy{}file\PYGZgt{}\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{p}{\PYGZam{}}\PYG{l+m}{2}
+\PYG{+w}{    }\PYG{n+nb}{exit}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{k}{fi}
+
+\PYG{n+nv}{csv\PYGZus{}file}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}1}\PYG{l+s+s2}{\PYGZdq{}}
+
+\PYG{c+c1}{\PYGZsh{} 检查文件是否存在}
+\PYG{k}{if}\PYG{+w}{ }\PYG{o}{[}\PYG{+w}{ }!\PYG{+w}{ }\PYGZhy{}f\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}csv\PYGZus{}file}\PYG{l+s+s2}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{then}
+\PYG{+w}{    }\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Error: File \PYGZsq{}}\PYG{n+nv}{\PYGZdl{}csv\PYGZus{}file}\PYG{l+s+s2}{\PYGZsq{} not found\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{p}{\PYGZam{}}\PYG{l+m}{2}
+\PYG{+w}{    }\PYG{n+nb}{exit}\PYG{+w}{ }\PYG{l+m}{1}
+\PYG{k}{fi}
+
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Top 2 5xx paths:\PYGZdq{}}
+
+grep\PYG{+w}{ }\PYGZhy{}v\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZca{}timestamp\PYGZsq{}}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}csv\PYGZus{}file}\PYG{l+s+s2}{\PYGZdq{}}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{} }\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} 去掉表头行}
+
+\PYG{+w}{    }\PYG{c+c1}{\PYGZsh{} 提取第4列（status）为5xx的，输出第3列（path）}
+\PYG{+w}{    }\PYG{p}{|}\PYG{+w}{ }awk\PYG{+w}{ }\PYGZhy{}F,\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}4 \PYGZgt{}= 500 \PYGZam{}\PYGZam{} \PYGZdl{}4 \PYGZlt{} 600 \PYGZob{}print \PYGZdl{}3\PYGZcb{}\PYGZsq{}}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+
+\PYG{+w}{    }\PYG{p}{|}\PYG{+w}{ }sort\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{} }\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} 排序以便 uniq 计数}
+\PYG{+w}{    }\PYG{p}{|}\PYG{+w}{ }uniq\PYG{+w}{ }\PYGZhy{}c\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{} }\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{} 统计每个 path 出现次数}
+\PYG{+w}{    }\PYG{p}{|}\PYG{+w}{ }sort\PYG{+w}{ }\PYGZhy{}k1,1nr\PYG{+w}{ }\PYGZhy{}k2,2\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{} }\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{} 先按次数降序，次数相同按 path 字典序}
+\PYG{+w}{    }\PYG{p}{|}\PYG{+w}{ }head\PYG{+w}{ }\PYGZhy{}2\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{} }\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{} 取前两名}
+\PYG{+w}{    }\PYG{p}{|}\PYG{+w}{ }awk\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZob{}print \PYGZdl{}2, \PYGZdl{}1\PYGZcb{}\PYGZsq{}}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} 将输出格式调整为 \PYGZdq{}path 次数\PYGZdq{}}
+
+\PYG{c+c1}{\PYGZsh{} 计算平均延迟，跳过表头并保留两位小数}
+\PYG{n+nv}{avg}\PYG{o}{=}\PYG{k}{\PYGZdl{}(}awk\PYG{+w}{ }\PYGZhy{}F,\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}NR \PYGZgt{} 1 \PYGZob{}sum += \PYGZdl{}5; count++\PYGZcb{}}
+\PYG{l+s+s1}{    END \PYGZob{}if (count) printf \PYGZdq{}\PYGZpc{}.2f\PYGZdq{}, sum/count; else print \PYGZdq{}0\PYGZdq{}\PYGZcb{}\PYGZsq{}}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}csv\PYGZus{}file}\PYG{l+s+s2}{\PYGZdq{}}\PYG{k}{)}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Average latency: }\PYG{n+nv}{\PYGZdl{}avg}\PYG{l+s+s2}{ ms\PYGZdq{}}
+\end{MintedVerbatim}
