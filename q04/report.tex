@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[UTF8]{ctex}
+\begin{document}
+\title{Tool Report}
+\author{魏尚儒-25020007136}
+\maketitle
+
+\section{Result}
+
+% 引用
+公式~\eqref{eq:energy}
+表~\ref{tab:sample}
+
+% 公式（编号会自动生成，可用\tag{}手动添加）
+\begin{equation}
+E = m c^2 \label{eq:energy}
+\end{equation}
+
+% 2*2表格
+\begin{table}[h]
+\centering
+\caption{示例数据表}\label{tab:sample}
+\begin{tabular}{|c|c|}
+\hline
+项目 & 数值 \\
+\hline
+A & 1.23 \\
+B & 4.56 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
