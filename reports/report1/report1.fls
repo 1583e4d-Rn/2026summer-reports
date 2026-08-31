@@ -325,9 +325,13 @@ INPUT _minted/C97859454D1FEA6F8F820A6122F7D728.highlight.minted
 INPUT ./_minted/BB7199E499D754B98FCE0917F576E809.highlight.minted
 INPUT ./_minted/BB7199E499D754B98FCE0917F576E809.highlight.minted
 INPUT _minted/BB7199E499D754B98FCE0917F576E809.highlight.minted
-INPUT ./_minted/525A9C9B3AFEEC29CAB2FC942EB05930.highlight.minted
-INPUT ./_minted/525A9C9B3AFEEC29CAB2FC942EB05930.highlight.minted
-INPUT _minted/525A9C9B3AFEEC29CAB2FC942EB05930.highlight.minted
+INPUT ./_minted/F18C59CA2A4707D098339CED0353B795.highlight.minted
+INPUT ./_minted/F18C59CA2A4707D098339CED0353B795.highlight.minted
+INPUT _minted/F18C59CA2A4707D098339CED0353B795.highlight.minted
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/mwe/example-image.tex
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/mwe/example-image.tex
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/mwe/example-image.pdf
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/mwe/example-image.pdf
 INPUT ./sections/other.tex
 INPUT ./sections/other.tex
 INPUT ./sections/other.tex

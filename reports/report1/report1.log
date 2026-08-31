@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.24)  31 AUG 2026 00:05
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.24)  31 AUG 2026 14:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -998,12 +998,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \pydata@fh@0=\write6
 \openout6 = `_7A11FCF2442E1A75F29F4BB13822282A.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260831000556 7A11FCF2442E1A75F29F4B
+runsystem(latexminted config  --timestamp 20260831143806 7A11FCF2442E1A75F29F4B
 B13822282A)...executed safely (allowed).
 
 
 (./_7A11FCF2442E1A75F29F4BB13822282A.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260831000556 7A11FCF2442E1A75F
+runsystem(latexminted cleanconfig  --timestamp 20260831143806 7A11FCF2442E1A75F
 29F4BB13822282A)...executed safely (allowed).
 
 
@@ -1196,7 +1196,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [18]) (./_minted/BB7199E499D754B98FCE0917F576E809.highlight.minted)
-(./_minted/525A9C9B3AFEEC29CAB2FC942EB05930.highlight.minted
+(./_minted/F18C59CA2A4707D098339CED0353B795.highlight.minted
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1204,7 +1204,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[19])) (./sections/other.tex
+[19])
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+) (./sections/other.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1213,6 +1216,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [20]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[21]
 File: ./graphs/git.png Graphic file (type bmp)
 <./graphs/git.png>
 )
@@ -1223,7 +1234,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[21] (./report1.aux)
+[22] (./report1.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026/08/11>
@@ -1233,15 +1244,15 @@ L3 programming layer <2026/08/11>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report1.out' has not changed.
-(rerunfilecheck)             Checksum: 5A999E0091436F634F37D2546F404FAB;2330.
+(rerunfilecheck)             Checksum: D0FEACF850C951B893B2DABD007810D1;2430.
  ) 
 Here is how much of TeX's memory you used:
- 22242 strings out of 467745
- 540836 string characters out of 5422257
+ 22264 strings out of 467745
+ 541360 string characters out of 5422257
  1061514 words of memory out of 5000000
- 51034 multiletter control sequences out of 15000+600000
+ 51055 multiletter control sequences out of 15000+600000
  633660 words of font info for 91 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,13n,112p,536b,1111s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report1.xdv (22 pages, 180720 bytes).
+Output written on report1.xdv (23 pages, 179348 bytes).

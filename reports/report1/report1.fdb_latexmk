@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1788105958.48513 "report1.xdv" "report1.pdf" "report1" 1788105960.39088 0
-  "report1.xdv" 1788105958.42583 180720 d93e9eeb2d5e40e088f157d7b91f324c "xelatex"
+["xdvipdfmx"] 1788158287.58724 "report1.xdv" "report1.pdf" "report1" 1788158289.5186 0
+  "report1.xdv" 1788158287.52631 179348 69f55a570207a65b8dec83d9ff0c94a8 "xelatex"
   (generated)
   "report1.pdf"
   (rewritten before read)
-["xelatex"] 1788105956.86976 "report1.tex" "report1.xdv" "report1" 1788105960.38984 0
+["xelatex"] 1788158285.962 "report1.tex" "report1.xdv" "report1" 1788158289.51741 0
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -84,6 +84,8 @@
   "/usr/local/texlive/2026/texmf-dist/tex/latex/latex2pydata/latex2pydata.sty" 1772138152 20314 8376d2e8fe666178ea25e2858b7c6967 ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/lineno/lineno.sty" 1772916571 156060 5215e5556723efde95042c27de7c8740 ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/minted/minted.sty" 1772659645 73364 3ba8c7272bc91743ef9ba45bc39808ec ""
+  "/usr/local/texlive/2026/texmf-dist/tex/latex/mwe/example-image.pdf" 1522444699 17568 8e23b7d568553840c1e0d1200fbe2c18 ""
+  "/usr/local/texlive/2026/texmf-dist/tex/latex/mwe/example-image.tex" 1336516272 472 ad3eb26372aefe8d1055d70eab56d506 ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty" 1601326656 274 5ae372b7df79135d240456a1c6f2cf9a ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/pgfopts/pgfopts.sty" 1405118212 5540 d5c60cf09c59da351aa4023ed084e4eb ""
   "/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
@@ -110,7 +112,6 @@
   "_minted/48F65EB17647CA6A5331C9E2FA7914F7.highlight.minted" 1788014651.22591 157 e5b5b77fc504fefe036d269ef8019a88 ""
   "_minted/4E7A604FF7661B2964CBC949E1802A29.highlight.minted" 1788094869.5871 1914 7cbae9ea3289877b26c9efc3b42fbdda ""
   "_minted/519538D3EC2D87CDB2DAE91262A5AE05.highlight.minted" 1788089908.09915 560 3ae00a54963703fbb7fa13816d966945 ""
-  "_minted/525A9C9B3AFEEC29CAB2FC942EB05930.highlight.minted" 1788103139.34394 2112 d416548f2ce23c71dade441eb879eabc ""
   "_minted/6975D21122EF4251A37DE1E5A5EC2E91.highlight.minted" 1788060234.74083 3397 3f85464d631668aab272516fbcdc8e28 ""
   "_minted/6CC6ECD9E46DACCC16940F1F4CC096DC.highlight.minted" 1788101279.97037 221 501d45b57702dbd7b2e3e198c7a805d4 ""
   "_minted/6FDCB0C0996E1CB98B279111D73CCBF2.highlight.minted" 1788101280.20638 256 0bc1485f2b5a1b0cec8c2071edc8ab85 ""
@@ -127,7 +128,8 @@
   "_minted/DBDFD87D496E9510971EE9E560202DF0.highlight.minted" 1788014651.95391 517 76d81d94046769cb61f3b33ec522f83f ""
   "_minted/DEC5F32311902E72C0A2CA8FEFE5111C.highlight.minted" 1788011598.25756 532 777883f7db4f3c7d4b53874d160d5585 ""
   "_minted/E02CC73DAA1C59123526221DF415C0E8.highlight.minted" 1788060008.57772 456 19077781d869e721fa44c041b9f3edc5 ""
-  "_minted/_7A11FCF2442E1A75F29F4BB13822282A.index.minted" 1788103139.59593 1690 9b0669e238fdf36e0d0ba613b0994d8e ""
+  "_minted/F18C59CA2A4707D098339CED0353B795.highlight.minted" 1788158196.01323 1151 d6d4064e05b91a259b3ec6aaef72c68c ""
+  "_minted/_7A11FCF2442E1A75F29F4BB13822282A.index.minted" 1788158196.24927 1690 8774e0a81d3c23ed44f2826f25229b0d ""
   "_minted/default.style.minted" 1788011598.24956 6426 e1fb43a91491f41b33310478eee48cdb ""
   "graphs/git.png" 1788105853.44726 263198 bac0594b8ca1c9664d0b23d272d3af3f ""
   "graphs/p1.png" 1788092193.67887 215300 929522746ac152cfbd3cf356abd8044d ""
@@ -142,13 +144,13 @@
   "graphs/q03_0.png" 1787558530.34876 316442 fd0e9742f1c480e2f14e5b8bb42f691a ""
   "graphs/q03_1.png" 1787558552.95374 158282 391af2cea142860c1cecd24116470436 ""
   "graphs/q04.png" 1788089838.48782 78365 7b958bf0645a0dc9862420a1a76d9c12 ""
-  "report1.aux" 1788105958.42583 3174 d00025cf5a162d33fdb37f9d8d66e9f6 "xelatex"
-  "report1.out" 1788105958.42583 2330 5a999e0091436f634f37d2546f404fab "xelatex"
+  "report1.aux" 1788158287.52631 3611 77f5b2c053cb41e15089732db9bd129d "xelatex"
+  "report1.out" 1788158287.52631 2430 d0feacf850c951b893b2dabd007810d1 "xelatex"
   "report1.tex" 1788105007.04045 1061 9352405538e0c05dc2872d106d5bfefb ""
-  "report1.toc" 1788105958.42583 1745 d934ee6825161c1a4c034a3ae1ab13a3 "xelatex"
-  "sections/assignments.tex" 1788102832.5759 8276 400c73959dfe546e0fee9fe03508e67f ""
+  "report1.toc" 1788158287.52631 1834 52ad47759930962d47b522b9ea763c82 "xelatex"
+  "sections/assignments.tex" 1788158173.20187 8276 31d37fd08b97f2de5afcb86a40138202 ""
   "sections/other.tex" 1788105953.2297 1303 174398572c63fa4dfa3c68470ca9d569 ""
-  "sections/practices.tex" 1788103126.18431 6843 753e65af52b0d894f9b8a62481b0d5d6 ""
+  "sections/practices.tex" 1788158283.06568 6936 407ecf96803f21861537fd2c63a3d253 ""
   (generated)
   "report1.aux"
   "report1.log"

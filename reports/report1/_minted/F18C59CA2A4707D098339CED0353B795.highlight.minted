@@ -1,0 +1,16 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}documentclass}\PYG{n+nb}{\PYGZob{}}article\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}graphicx\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}graphicspath}\PYG{n+nb}{\PYGZob{}\PYGZob{}}figures/\PYG{n+nb}{\PYGZcb{}\PYGZcb{}} \PYG{c}{\PYGZpc{} 假设图片在 figures 文件夹下}
+
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}figure\PYG{n+nb}{\PYGZcb{}}[H]
+    \PYG{k}{\PYGZbs{}centering}
+    \PYG{k}{\PYGZbs{}includegraphics}\PYG{n+na}{[width=0.8\PYGZbs{}textwidth]}\PYG{n+nb}{\PYGZob{}}example\PYGZhy{}image\PYG{n+nb}{\PYGZcb{}} \PYG{c}{\PYGZpc{} 图片文件名}
+    \PYG{k}{\PYGZbs{}caption}\PYG{n+nb}{\PYGZob{}}这是一个示例图片\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}label}\PYG{n+nb}{\PYGZob{}}fig:example\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}figure\PYG{n+nb}{\PYGZcb{}}
+如图 \PYG{k}{\PYGZbs{}ref}\PYG{n+nb}{\PYGZob{}}fig:example\PYG{n+nb}{\PYGZcb{}} 所示。
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+
+\end{MintedVerbatim}

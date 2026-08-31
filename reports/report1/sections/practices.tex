@@ -202,7 +202,6 @@ git push origin
 \end{minted}
 
 示例效果：
-\begin{minted}[frame=single, fontsize=\small]{latex}
 \textbf{无序列表：}
 \begin{itemize}
     \item 第一个项目
@@ -223,14 +222,21 @@ git push origin
 \graphicspath{{figures/}} % 假设图片在 figures 文件夹下
 
 \begin{document}
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{example-image} % 图片文件名（无需扩展名）
+    \includegraphics[width=0.8\textwidth]{example-image} % 图片文件名
     \caption{这是一个示例图片}
     \label{fig:example}
 \end{figure}
 如图 \ref{fig:example} 所示。
 \end{document}
+
 \end{minted}
 
-具体效果参考本报告。
+效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image} % 图片文件名
+    \caption{这是一个示例图片}
+    \label{fig:example}
+\end{figure}
