@@ -1,0 +1,93 @@
+\section{课后练习}
+
+\subsection{命令行环境}
+
+\subsubsection{使用 jobs、bg 与 fg 管理后台任务}
+在命令末尾加上 \& 可让任务在后台运行；Ctrl-Z 可将前台任务挂起，bg 与 fg 则分别让其在后台继续或回到前台，jobs 用于查看所有任务状态。作业控制相关内容可参见课程资源中的 missing-semester 课程。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+sleep 100 &      # 后台运行
+jobs             # 查看任务列表
+fg %1            # 把 1 号任务调回前台
+# 按下 Ctrl-Z 挂起后：
+bg %1            # 让其在后台继续
+\end{minted}
+
+\subsubsection{使用 trap 捕获信号进行清理}
+trap 可以在脚本退出或收到特定信号时执行清理逻辑，避免脚本中断后残留临时文件或占用资源。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+#!/usr/bin/env bash
+trap 'rm -f /tmp/task.lock; echo "cleaned"' EXIT
+touch /tmp/task.lock
+sleep 5
+\end{minted}
+
+\subsubsection{使用 nohup 让任务脱离终端继续运行}
+默认情况下，关闭终端会向进程发送 SIGHUP 使其终止；使用 nohup 可让进程忽略该信号，适合长时间运行的任务。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+nohup python3 train.py > train.log 2>&1 &
+disown
+\end{minted}
+
+\subsection{开发环境与工具}
+
+\subsubsection{用 venv 创建隔离的 Python 环境}
+虚拟环境可隔离不同项目的依赖，避免版本冲突，是 Python 项目的基本实践。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+python3 -m venv .venv
+source .venv/bin/activate   # 激活环境
+pip install requests
+deactivate
+\end{minted}
+
+\subsubsection{用 pip 管理依赖}
+将项目依赖写入 requirements.txt 便于环境复现，相关内容可参考课程资源中的 runoob Python 教程。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+pip freeze > requirements.txt    # 导出当前依赖
+pip install -r requirements.txt  # 按清单安装
+\end{minted}
+
+\subsubsection{用 ruff 统一风格与静态检查}
+ruff 同时提供格式化与静态检查，能够发现未使用的导入、未定义变量等问题，并可一键修复。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+ruff format .        # 自动格式化
+ruff check .         # 静态检查
+ruff check --fix .   # 自动修复可修复的问题
+\end{minted}
+
+\subsection{Debugging}
+
+\subsubsection{pdb 常用调试命令}
+使用 pdb 可以设置断点、单步执行并检查变量值，是定位逻辑缺陷的有效手段。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import pdb; pdb.set_trace()   # 在此处进入交互调试
+# 常用命令：
+# b 行号：设置断点；n：单步执行；c：继续到断点；p 变量：打印变量
+\end{minted}
+
+\subsubsection{用 logging 分级日志替代 print}
+相较于 print，logging 支持日志级别、模块化与输出目标配置，更适合需要长期维护的程序。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import logging
+logging.basicConfig(level=logging.INFO)
+logging.debug("细节信息")   # 默认级别下不显示
+logging.info("正常流程")
+logging.warning("警告")
+logging.error("错误")
+\end{minted}
+
+\subsection{Profiling}
+
+\subsubsection{用 timeit 精确测量小段代码}
+timeit 会自动多次执行以降低测量误差，适合对比两段小代码的性能差异。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import timeit
+t1 = timeit.timeit("'-'.join(map(str, range(100)))", number=10000)
+t2 = timeit.timeit("'-'.join(str(i) for i in range(100))", number=10000)
+print(t1, t2)
+\end{minted}
+
+\subsubsection{用 cProfile 定位函数级热点}
+cProfile 能按函数统计调用次数与耗时，配合 -s cumulative 可按累计时间排序，快速找到性能瓶颈所在。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+python3 -m cProfile -s cumulative script.py
+\end{minted}

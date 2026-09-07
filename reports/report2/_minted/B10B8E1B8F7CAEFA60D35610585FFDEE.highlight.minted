@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+sleep\PYG{+w}{ }\PYG{l+m}{100}\PYG{+w}{ }\PYG{p}{\PYGZam{}}\PYG{+w}{      }\PYG{c+c1}{\PYGZsh{} 后台运行}
+\PYG{n+nb}{jobs}\PYG{+w}{             }\PYG{c+c1}{\PYGZsh{} 查看任务列表}
+\PYG{n+nb}{fg}\PYG{+w}{ }\PYGZpc{}1\PYG{+w}{            }\PYG{c+c1}{\PYGZsh{} 把 1 号任务调回前台}
+\PYG{c+c1}{\PYGZsh{} 按下 Ctrl\PYGZhy{}Z 挂起后：}
+\PYG{n+nb}{bg}\PYG{+w}{ }\PYGZpc{}1\PYG{+w}{            }\PYG{c+c1}{\PYGZsh{} 让其在后台继续}
+\end{MintedVerbatim}

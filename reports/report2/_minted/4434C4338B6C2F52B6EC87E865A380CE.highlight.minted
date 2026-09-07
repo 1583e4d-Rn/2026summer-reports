@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{kill}\PYG{+w}{ }\PYGZhy{}TERM\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}\PYG{n+nb}{jobs}\PYG{+w}{ }\PYGZhy{}p\PYG{k}{)}
+\PYG{n+nb}{wait}
+\PYG{n+nb}{jobs}
+cat\PYG{+w}{ }cleanup.log
+\end{MintedVerbatim}

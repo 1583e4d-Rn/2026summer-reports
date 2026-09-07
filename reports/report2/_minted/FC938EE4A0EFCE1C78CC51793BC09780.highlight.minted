@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+ruff\PYG{+w}{ }check\PYG{+w}{ }app.py
+ruff\PYG{+w}{ }check\PYG{+w}{ }\PYGZhy{}\PYGZhy{}fix\PYG{+w}{ }app.py
+\end{MintedVerbatim}

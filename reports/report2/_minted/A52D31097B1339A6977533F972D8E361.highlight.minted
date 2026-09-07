@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+pip\PYG{+w}{ }freeze\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }requirements.txt\PYG{+w}{    }\PYG{c+c1}{\PYGZsh{} 导出当前依赖}
+pip\PYG{+w}{ }install\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }requirements.txt\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} 按清单安装}
+\end{MintedVerbatim}

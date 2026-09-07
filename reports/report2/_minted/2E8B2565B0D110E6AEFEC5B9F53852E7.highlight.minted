@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+ruff\PYG{+w}{ }format\PYG{+w}{ }.\PYG{+w}{        }\PYG{c+c1}{\PYGZsh{} 自动格式化}
+ruff\PYG{+w}{ }check\PYG{+w}{ }.\PYG{+w}{         }\PYG{c+c1}{\PYGZsh{} 静态检查}
+ruff\PYG{+w}{ }check\PYG{+w}{ }\PYGZhy{}\PYGZhy{}fix\PYG{+w}{ }.\PYG{+w}{   }\PYG{c+c1}{\PYGZsh{} 自动修复可修复的问题}
+\end{MintedVerbatim}

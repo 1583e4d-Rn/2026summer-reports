@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+nohup\PYG{+w}{ }python3\PYG{+w}{ }train.py\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }train.log\PYG{+w}{ }\PYG{l+m}{2}\PYGZgt{}\PYG{p}{\PYGZam{}}\PYG{l+m}{1}\PYG{+w}{ }\PYG{p}{\PYGZam{}}
+\PYG{n+nb}{disown}
+\end{MintedVerbatim}

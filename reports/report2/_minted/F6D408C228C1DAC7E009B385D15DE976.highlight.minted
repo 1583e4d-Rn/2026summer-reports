@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{logging}
+\PYG{n}{logging}\PYG{o}{.}\PYG{n}{basicConfig}\PYG{p}{(}\PYG{n}{level}\PYG{o}{=}\PYG{n}{logging}\PYG{o}{.}\PYG{n}{INFO}\PYG{p}{)}
+\PYG{n}{logging}\PYG{o}{.}\PYG{n}{debug}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}细节信息\PYGZdq{}}\PYG{p}{)}   \PYG{c+c1}{\PYGZsh{} 默认级别下不显示}
+\PYG{n}{logging}\PYG{o}{.}\PYG{n}{info}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}正常流程\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{logging}\PYG{o}{.}\PYG{n}{warning}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}警告\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{logging}\PYG{o}{.}\PYG{n}{error}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}错误\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

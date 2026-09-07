@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+python3\PYG{+w}{ }generate\PYGZus{}words.py
+\PYG{n+nb}{time}\PYG{+w}{ }python3\PYG{+w}{ }wordfreq.py
+\PYG{n+nb}{time}\PYG{+w}{ }python3\PYG{+w}{ }wordfreq.py
+\end{MintedVerbatim}

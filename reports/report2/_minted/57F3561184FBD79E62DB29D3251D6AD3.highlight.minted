@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+python3\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }venv\PYG{+w}{ }.venv
+\PYG{n+nb}{source}\PYG{+w}{ }.venv/bin/activate\PYG{+w}{   }\PYG{c+c1}{\PYGZsh{} 激活环境}
+pip\PYG{+w}{ }install\PYG{+w}{ }requests
+deactivate
+\end{MintedVerbatim}

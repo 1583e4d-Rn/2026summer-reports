@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{timeit}
+\PYG{n}{t1} \PYG{o}{=} \PYG{n}{timeit}\PYG{o}{.}\PYG{n}{timeit}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZsq{}\PYGZhy{}\PYGZsq{}.join(map(str, range(100)))\PYGZdq{}}\PYG{p}{,} \PYG{n}{number}\PYG{o}{=}\PYG{l+m+mi}{10000}\PYG{p}{)}
+\PYG{n}{t2} \PYG{o}{=} \PYG{n}{timeit}\PYG{o}{.}\PYG{n}{timeit}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZsq{}\PYGZhy{}\PYGZsq{}.join(str(i) for i in range(100))\PYGZdq{}}\PYG{p}{,} \PYG{n}{number}\PYG{o}{=}\PYG{l+m+mi}{10000}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{t1}\PYG{p}{,} \PYG{n}{t2}\PYG{p}{)}
+\end{MintedVerbatim}

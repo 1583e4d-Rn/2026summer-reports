@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pdb}\PYG{p}{;} \PYG{n}{pdb}\PYG{o}{.}\PYG{n}{set\PYGZus{}trace}\PYG{p}{()}   \PYG{c+c1}{\PYGZsh{} 在此处进入交互调试}
+\PYG{c+c1}{\PYGZsh{} 常用命令：}
+\PYG{c+c1}{\PYGZsh{} b 行号：设置断点；n：单步执行；c：继续到断点；p 变量：打印变量}
+\end{MintedVerbatim}

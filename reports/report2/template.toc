@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}实验内容}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}控制一个可清理的后台任务}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}语义重构与本地开发反馈}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}用调试器定位归并排序缺陷}{6}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}先测量，再优化慢速词频程序}{10}{subsection.1.4}%
+\contentsline {section}{\numberline {2}课后练习}{13}{section.2}%
+\contentsline {subsection}{\numberline {2.1}命令行环境}{13}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}使用 jobs、bg 与 fg 管理后台任务}{13}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}使用 trap 捕获信号进行清理}{14}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}使用 nohup 让任务脱离终端继续运行}{14}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}开发环境与工具}{14}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}用 venv 创建隔离的 Python 环境}{14}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}用 pip 管理依赖}{15}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}用 ruff 统一风格与静态检查}{15}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Debugging}{15}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}pdb 常用调试命令}{15}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}用 logging 分级日志替代 print}{15}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Profiling}{16}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}用 timeit 精确测量小段代码}{16}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}用 cProfile 定位函数级热点}{16}{subsubsection.2.4.2}%
+\contentsline {section}{\numberline {3}感悟}{16}{section.3}%

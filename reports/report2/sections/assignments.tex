@@ -1,0 +1,261 @@
+\section{实验内容}
+
+\subsection{控制一个可清理的后台任务}
+本题要求控制一个带 trap 清理逻辑的后台任务，详细如下：
+\begin{itemize}
+    \item 赋予脚本执行权限，在前台启动，并把 stdout、stderr 分别写入 stdout.log、stderr.log。
+    \item 使用 Ctrl-Z 挂起任务，再用 bg 让它在后台继续；使用 jobs 确认状态。
+    \item 使用 jobs -p 取得 PID（不得手工抄写），发送 SIGTERM 并等待任务结束。
+    \item 确认 cleanup.log 中出现 CLEAN\_EXIT，且任务已退出；禁止使用 kill -9。
+\end{itemize}
+
+给定脚本 worker.sh：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+#!/usr/bin/env bash
+trap 'echo CLEAN_EXIT >> cleanup.log; exit 0' TERM INT
+n=0
+while true; do
+  echo "$n"
+  n=$((n+1))
+  sleep 1
+done
+\end{minted}
+
+\subsubsection*{前台启动并重定向输出}
+首先赋予执行权限，然后在前台启动脚本，把 stdout、stderr 分别写入 stdout.log 与 stderr.log。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+chmod +x worker.sh
+./worker.sh > stdout.log 2> stderr.log
+\end{minted}
+
+\subsubsection*{挂起并转入后台}
+在脚本运行期间按下 Ctrl-Z 将其挂起，再用 bg 让它在后台继续，并用 jobs 确认任务状态。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+bg
+jobs
+\end{minted}
+
+\subsubsection*{发送 SIGTERM 并确认清理}
+使用 jobs -p 获取后台任务的 PID，对其发送 SIGTERM，等待任务退出后查看 cleanup.log。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+kill -TERM $(jobs -p)
+wait
+jobs
+cat cleanup.log
+\end{minted}
+
+运行效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q05}
+\end{figure}
+
+\subsection{语义重构与本地开发反馈}
+本题要求使用编辑器语言服务器完成一次语义重构，详细如下：
+\begin{itemize}
+    \item 在已配置好 Python、pytest 和 ruff 的课程环境中打开 q06，并启用 Python 语言服务器。
+    \item 分别演示跳转到定义和查找引用。
+    \item 使用“重命名符号”把 total\_price 改为 calculate\_total，保证定义和所有代码引用同步改变。
+    \item 在 app.py 中临时加入未使用的 import os，用 ruff 发现并删除；最后运行 ruff 和 pytest 并保证通过。
+\end{itemize}
+
+给定三个 Python 文件：
+\begin{minted}[frame=single, fontsize=\small]{python}
+# math_utils.py
+def total_price(price: float, count: int) -> float:
+    return price * count
+
+# app.py
+from math_utils import total_price
+print(total_price(12.5, 4))
+
+# test_math_utils.py
+from math_utils import total_price
+def test_total_price():
+    assert total_price(12.5, 4) == 50.0
+\end{minted}
+
+\subsubsection*{跳转到定义与查找引用}
+在 app.py 中对 total\_price 使用“跳转到定义”，可定位到 math\_utils.py 中的函数定义；使用“查找引用”可列出所有调用位置。效果如下：
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q06_0}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q06_1}
+\end{subfigure}
+\end{figure}
+
+\subsubsection*{重命名符号}
+使用“重命名符号”将 total\_price 重命名为 calculate\_total，定义与所有代码引用同步更新。重命名后的 math\_utils.py 如下：
+\begin{minted}[frame=single, fontsize=\small]{python}
+def calculate_total(price: float, count: int) -> float:
+    return price * count
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q06_2}
+\end{figure}
+
+\subsubsection*{用 ruff 发现并删除未使用的 import}
+在 app.py 中临时加入 import os，先用 ruff 检测出未使用的导入，再用 --fix 自动删除。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+ruff check app.py
+ruff check --fix app.py
+\end{minted}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q06_3}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q06_4}
+\end{subfigure}
+\end{figure}
+
+最后运行 ruff 与 pytest，保证全部通过：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q06_5}
+\end{figure}
+
+\subsection{用调试器定位归并排序缺陷}
+本题要求使用调试器定位并修复归并排序中的缺陷，详细如下：
+\begin{itemize}
+    \item 先运行给定输入，确认结果错误或出现异常。
+    \item 使用 pdb、IDE debugger 或等价调试器，在 merge 中设置断点并观察 i、j、left[i]、right[j]。
+    \item 完成最小修复，不得用 sorted 替换归并排序。
+    \item 使用 pytest 增加两个测试：给定输入和含重复元素的列表；保证测试通过。
+\end{itemize}
+
+给定存在缺陷的归并排序：
+\begin{minted}[frame=single, fontsize=\small]{python}
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i]); i += 1
+        else:
+            result.append(right[i]); j += 1   # 此处存在缺陷
+    return result + left[i:] + right[j:]
+
+def merge_sort(a):
+    if len(a) <= 1: return a
+    m = len(a) // 2
+    return merge(merge_sort(a[:m]), merge_sort(a[m:]))
+
+print(merge_sort([3, 1, 4, 1, 5, 9, 2, 6]))
+\end{minted}
+
+\subsubsection*{运行缺陷代码}
+运行后输出 [1, 5, 4, 3, 4, 5, 6, 9]，与期望的 [1, 1, 2, 3, 4, 5, 6, 9] 不符，确认缺陷存在。运行效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q07_0}
+\end{figure}
+
+\subsubsection*{设断点观察变量}
+在 merge 中设置断点，单步观察 i、j、left[i]、right[j] 的值。当 left[i] > right[j] 进入 else 分支时，发现代码误用 right[i]（left 的游标）索引 right 列表，此处应为 right[j]。调试过程如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q07_1}
+\end{figure}
+
+\subsubsection*{最小修复}
+仅将 else 分支中的 right[i] 改为 right[j]：
+\begin{minted}[frame=single, fontsize=\small]{python}
+            result.append(right[j]); j += 1
+\end{minted}
+
+\subsubsection*{测试验证}
+编写 test\_merge\_sort.py，增加给定输入与含重复元素两个测试：
+\begin{minted}[frame=single, fontsize=\small]{python}
+from merge_sort import merge_sort
+
+def test_given_input():
+    assert merge_sort([3, 1, 4, 1, 5, 9, 2, 6]) == [1, 1, 2, 3, 4, 5, 6, 9]
+
+
+def test_duplicates():
+    assert merge_sort([5, 2, 5, 2, 5]) == [2, 2, 5, 5, 5]
+    assert merge_sort([1, 1, 1]) == [1, 1, 1]
+\end{minted}
+
+运行效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q07_2}
+\end{figure}
+
+\subsection{先测量，再优化慢速词频程序}
+本题要求使用性能分析工具优化低效去重程序，详细如下：
+\begin{itemize}
+    \item 生成 words.txt，使用 time 运行原程序 2 次并记录耗时。
+    \item 使用 cProfile -s cumulative 运行一次，找出主要耗时位置。
+    \item 在不改变最终 count 的前提下优化程序；不得写死 1000。
+    \item 使用相同输入再运行 2 次，计算优化前后中位数和加速比。
+\end{itemize}
+
+给定内容：
+\begin{minted}[frame=single, fontsize=\small]{python}
+# generate_words.py
+import random
+random.seed(20260831)
+vocab = [f"w{i}" for i in range(1000)]
+with open("words.txt", "w", encoding="utf-8") as f:
+    f.write(" ".join(random.choice(vocab) for _ in range(30000)))
+
+# wordfreq.py
+words = open("words.txt", encoding="utf-8").read().split()
+unique = []
+for word in words:
+    if word not in unique:
+        unique.append(word)
+print("count=", len(unique))
+\end{minted}
+
+\subsubsection*{生成词表并基准测量}
+生成 words.txt，再用 time 运行原程序 2 次记录耗时。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+python3 generate_words.py
+time python3 wordfreq.py
+time python3 wordfreq.py
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q08_0}
+\end{figure}
+
+\subsubsection*{cProfile 定位瓶颈}
+使用 cProfile -s cumulative 运行一次，发现几乎全部耗时集中在 wordfreq.py 的 for 循环中。对 list 做 in 检查为 O(n) 线性扫描，整体复杂度为 O($n^2$)。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+python3 -m cProfile -s cumulative wordfreq.py
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q08_1}
+\end{figure}
+
+\subsubsection*{优化：用 set 代替 list}
+将 O($n^2$) 的 list 去重改为 O(n) 的 set 去重，最终 count 保持不变：
+\begin{minted}[frame=single, fontsize=\small]{python}
+words = open("words.txt", encoding="utf-8").read().split()
+unique = set(words)
+print("count=", len(unique))
+\end{minted}
+
+\subsubsection*{对比运行时间并计算加速比}
+使用相同输入再运行 2 次：优化前中位数约 0.1315s，优化后约 0.0140s，加速比约 9.4 倍。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.83\linewidth]{q08_2}
+\end{figure}

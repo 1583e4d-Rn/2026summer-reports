@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+chmod\PYG{+w}{ }+x\PYG{+w}{ }worker.sh
+./worker.sh\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }stdout.log\PYG{+w}{ }\PYG{l+m}{2}\PYGZgt{}\PYG{+w}{ }stderr.log
+\end{MintedVerbatim}
