@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.24)  7 SEP 2026 13:35
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.8.24)  7 SEP 2026 14:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -998,12 +998,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \pydata@fh@0=\write6
 \openout6 = `_66F6181BCB4CFF4CD38FBC804A036DB6.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260907133537 66F6181BCB4CFF4CD38FBC
+runsystem(latexminted config  --timestamp 20260907140927 66F6181BCB4CFF4CD38FBC
 804A036DB6)...executed safely (allowed).
 
 
 (./_66F6181BCB4CFF4CD38FBC804A036DB6.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260907133537 66F6181BCB4CFF4CD
+runsystem(latexminted cleanconfig  --timestamp 20260907140927 66F6181BCB4CFF4CD
 38FBC804A036DB6)...executed safely (allowed).
 
 
@@ -1021,7 +1021,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[2]) (./_minted/4434C4338B6C2F52B6EC87E865A380CE.highlight.minted)
+[2]) (./_minted/3C3666A587501954686697C6022F4204.highlight.minted)
 File: ./graphs/q05.png Graphic file (type bmp)
 <./graphs/q05.png>
 
@@ -1045,10 +1045,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[4] (./_minted/95E236918281F6B51993083E224F49C9.highlight.minted)
+[4]
 File: ./graphs/q06_2.png Graphic file (type bmp)
 <./graphs/q06_2.png>
-
+ (./_minted/95E236918281F6B51993083E224F49C9.highlight.minted)
 (./_minted/FC938EE4A0EFCE1C78CC51793BC09780.highlight.minted
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1225,4 +1225,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  93i,12n,112p,607b,1054s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on template.xdv (19 pages, 148940 bytes).
+Output written on template.xdv (19 pages, 149392 bytes).

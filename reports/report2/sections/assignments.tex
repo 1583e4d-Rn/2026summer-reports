@@ -36,12 +36,12 @@ jobs
 \end{minted}
 
 \subsubsection*{发送 SIGTERM 并确认清理}
-使用 jobs -p 获取后台任务的 PID，对其发送 SIGTERM，等待任务退出后查看 cleanup.log。
+使用 jobs -p 获取后台任务的 PID，对其发送 SIGTERM，并在任务退出后检查 cleanup.log 中是否有 CLEAN\_EXIT。
 \begin{minted}[frame=single, fontsize=\small]{bash}
 kill -TERM $(jobs -p)
 wait
 jobs
-cat cleanup.log
+grep CLEAN_EXIT cleanup.log
 \end{minted}
 
 运行效果如下：
@@ -76,7 +76,7 @@ def test_total_price():
 \end{minted}
 
 \subsubsection*{跳转到定义与查找引用}
-在 app.py 中对 total\_price 使用“跳转到定义”，可定位到 math\_utils.py 中的函数定义；使用“查找引用”可列出所有调用位置。效果如下：
+在 app.py 中对 total\_price 使用“跳转到定义”，可定位到 math\_utils.py 中的函数定义，效果如下：
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.49\textwidth}
@@ -88,17 +88,19 @@ def test_total_price():
 \end{subfigure}
 \end{figure}
 
+使用“查找引用”可列出所有调用位置，效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{q06_2}
+\end{figure}
+
+
 \subsubsection*{重命名符号}
 使用“重命名符号”将 total\_price 重命名为 calculate\_total，定义与所有代码引用同步更新。重命名后的 math\_utils.py 如下：
 \begin{minted}[frame=single, fontsize=\small]{python}
 def calculate_total(price: float, count: int) -> float:
     return price * count
 \end{minted}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{q06_2}
-\end{figure}
 
 \subsubsection*{用 ruff 发现并删除未使用的 import}
 在 app.py 中临时加入 import os，先用 ruff 检测出未使用的导入，再用 --fix 自动删除。

@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1788759338.75778 "template.xdv" "template.pdf" "template" 1788759340.73591 0
-  "template.xdv" 1788759338.69812 148940 a4b058836568f5bcff977fb28b4e8898 "xelatex"
+["xdvipdfmx"] 1788761368.73386 "template.xdv" "template.pdf" "template" 1788761370.67831 0
+  "template.xdv" 1788761368.67877 149392 403799aff6e778533a5395beafd8d586 "xelatex"
   (generated)
   "template.pdf"
   (rewritten before read)
-["xelatex"] 1788759337.44893 "template.tex" "template.xdv" "template" 1788759340.73485 0
+["xelatex"] 1788761367.43846 "template.tex" "template.xdv" "template" 1788761370.67728 0
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -108,7 +108,7 @@
   "_minted/27C8DC3CDC0B883961950431B60B130B.highlight.minted" 1788665638.45106 97 f57d42af39d512468b700947064614f2 ""
   "_minted/2E8B2565B0D110E6AEFEC5B9F53852E7.highlight.minted" 1788665638.48306 370 2c5a1a68c97bfe5f929f7a73e509767f ""
   "_minted/2FA21F2A359D8F97357A69BC35124CC2.highlight.minted" 1788665638.47906 300 10044bf24e86476b995ba9e2a6e4b516 ""
-  "_minted/4434C4338B6C2F52B6EC87E865A380CE.highlight.minted" 1788665638.45106 243 c880a7d626844baaeebaa3e335135704 ""
+  "_minted/3C3666A587501954686697C6022F4204.highlight.minted" 1788761054.10746 273 cb11cc2d78887a53019af00b23d59936 ""
   "_minted/57F3561184FBD79E62DB29D3251D6AD3.highlight.minted" 1788665638.48306 272 88e49ec5d33b2dedfa15fe6976fcb80b ""
   "_minted/5D8FBE8B086CDC4C61F529582AFBDE93.highlight.minted" 1788665638.48306 640 df65caf491ce9bc5860628b4fc030bec ""
   "_minted/90224DFD04810F4A8C1562076D8C1D15.highlight.minted" 1788665638.47906 258 da0298ba01be5ed502113e27c819cd8f ""
@@ -125,7 +125,7 @@
   "_minted/F6D408C228C1DAC7E009B385D15DE976.highlight.minted" 1788665638.48306 702 9ce40b602da116941a361c018f1ed899 ""
   "_minted/FB944C946ABDD1C310ABC275A8876E7C.highlight.minted" 1788665638.47906 1734 58c6a7836e542d858142cec37ed79a61 ""
   "_minted/FC938EE4A0EFCE1C78CC51793BC09780.highlight.minted" 1788665638.47106 173 06f259979af1fd3460858430339852d4 ""
-  "_minted/_66F6181BCB4CFF4CD38FBC804A036DB6.index.minted" 1788759337.38589 1577 2711b311742be545230e3ebe9b2bbc41 ""
+  "_minted/_66F6181BCB4CFF4CD38FBC804A036DB6.index.minted" 1788761054.63548 1577 d33c281c146f9212527d7eeee787e2f2 ""
   "_minted/default.style.minted" 1788665638.44306 6426 e1fb43a91491f41b33310478eee48cdb ""
   "graphs/git.png" 1788759274.91547 347030 f0060a56ac82cbda4b807c0a4c99fba0 ""
   "graphs/q05.png" 1788155973.26488 148790 161ddbda473db00467734464a680e480 ""
@@ -141,13 +141,13 @@
   "graphs/q08_0.png" 1788166598.55744 118612 975d417dee892b6539ca7d8e0c26b5c3 ""
   "graphs/q08_1.png" 1788166674.59211 163436 8acb4aedfc3785fb642aeda9c909f486 ""
   "graphs/q08_2.png" 1788758696.19237 109240 c54fe773bacc8e6d42245ceb0fcd893b ""
-  "sections/assignments.tex" 1788758939.85372 9162 59cc2a89bd0a3e8e6405e92fc6331e6d ""
+  "sections/assignments.tex" 1788761362.84256 9216 f1484b961a17c4e38124072eb50e550f ""
   "sections/other.tex" 1788759326.31601 1450 3f716757e710dc37a82d43a65f2859aa ""
   "sections/practices.tex" 1788665123.67724 3907 94d4c2f9023a0e61c5f00bd935eedbb5 ""
-  "template.aux" 1788759338.69812 3500 e16b091d8529d360ebf4befeda74ec64 "xelatex"
-  "template.out" 1788759338.69812 3112 652f3bfb9d797e98ae33a6dadd423894 "xelatex"
+  "template.aux" 1788761368.67877 3500 5177cc47873df61846136c60161f30f9 "xelatex"
+  "template.out" 1788761368.67877 3112 652f3bfb9d797e98ae33a6dadd423894 "xelatex"
   "template.tex" 1788665630.11064 1061 0c3d8d5e700574230ceffda9d283ca11 ""
-  "template.toc" 1788759338.69812 2046 b004024d9e03da4fa2f787ea51073820 "xelatex"
+  "template.toc" 1788761368.67877 2046 b004024d9e03da4fa2f787ea51073820 "xelatex"
   (generated)
   "template.aux"
   "template.log"
