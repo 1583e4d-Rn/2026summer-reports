@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "greetlab-25020007136"
+version = "0.1.0"
+[project.scripts]
+sdt-greet = "greetlab.cli:main"
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+[tool.ruff.lint]
+# 启用常见的规则集合（E: Pycodestyle错误, F: Pyflakes错误, I: isort导入排序）
+select = ["E", "F", "I", "W"]
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = "test_*.py"

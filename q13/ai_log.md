@@ -1,0 +1,3 @@
+- 核心提示：让纯空白 name 抛出 SystemExit(2)。
+- 智能体改动：在 main 函数中增加 if not a.name.strip(): p.error(...)。
+- 人工验证：审查 diff 无副作用，pytest 测试通过（Exit code 2）。
