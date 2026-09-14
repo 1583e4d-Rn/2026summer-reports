@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{g+gu}{\PYGZsh{}\PYGZsh{}\PYGZsh{} Issue: 空姓名仍输出问候语}
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }环境：Windows 10, Python 3.10+
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }复现命令：sdt\PYGZhy{}greet \PYGZhy{}\PYGZhy{}name \PYGZdq{}   \PYGZdq{}
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }预期结果：报错并以非零状态码退出。
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }实际结果：输出问候语并以 0 退出。
+\end{MintedVerbatim}

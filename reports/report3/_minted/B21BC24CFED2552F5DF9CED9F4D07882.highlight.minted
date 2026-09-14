@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+pip\PYG{+w}{ }install\PYG{+w}{ }requests\PYG{+w}{          }\PYG{c+c1}{\PYGZsh{} 安装包}
+pip\PYG{+w}{ }install\PYG{+w}{ }\PYG{n+nv}{requests}\PYG{o}{==}\PYG{l+m}{2}.31.0\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} 安装指定版本}
+pip\PYG{+w}{ }uninstall\PYG{+w}{ }requests\PYG{+w}{ }\PYGZhy{}y\PYG{+w}{     }\PYG{c+c1}{\PYGZsh{} 卸载包}
+pip\PYG{+w}{ }list\PYG{+w}{                      }\PYG{c+c1}{\PYGZsh{} 查看已安装的包}
+\end{MintedVerbatim}

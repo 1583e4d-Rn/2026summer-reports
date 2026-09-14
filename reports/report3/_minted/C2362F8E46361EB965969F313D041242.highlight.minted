@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }diff\PYG{+w}{                }\PYG{c+c1}{\PYGZsh{} 查看工作区与暂存区的差异}
+git\PYG{+w}{ }diff\PYG{+w}{ }\PYGZhy{}\PYGZhy{}stat\PYG{+w}{         }\PYG{c+c1}{\PYGZsh{} 仅查看改动文件与行数}
+git\PYG{+w}{ }checkout\PYG{+w}{ }\PYGZhy{}\PYGZhy{}\PYG{+w}{ }\PYGZlt{}file\PYGZgt{}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} 撤销某个文件的无关修改}
+\end{MintedVerbatim}

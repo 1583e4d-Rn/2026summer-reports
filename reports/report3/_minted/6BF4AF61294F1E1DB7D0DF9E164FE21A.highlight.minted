@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} pyproject.toml}
+\PYG{k}{[build\PYGZhy{}system]}
+\PYG{n+na}{requires}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{[\PYGZdq{}setuptools\PYGZgt{}=68\PYGZdq{}]}
+\PYG{n+na}{build\PYGZhy{}backend}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}setuptools.build\PYGZus{}meta\PYGZdq{}}
+\PYG{k}{[project]}
+\PYG{n+na}{name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}greetlab\PYGZhy{}25020007136\PYGZdq{}}
+\PYG{n+na}{version}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}0.1.0\PYGZdq{}}
+\PYG{k}{[project.scripts]}
+\PYG{n+na}{sdt\PYGZhy{}greet}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}greetlab.cli:main\PYGZdq{}}
+\end{MintedVerbatim}

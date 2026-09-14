@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+python3\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }build
+\PYG{c+c1}{\PYGZsh{} 生成 dist/*.whl 与 dist/*.tar.gz}
+\end{MintedVerbatim}

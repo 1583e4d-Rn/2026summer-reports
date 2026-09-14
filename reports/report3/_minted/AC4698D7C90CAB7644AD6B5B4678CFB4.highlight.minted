@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+python3\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }venv\PYG{+w}{ }/tmp/greetlab\PYGZhy{}venv
+/tmp/greetlab\PYGZhy{}venv/bin/pip\PYG{+w}{ }install\PYG{+w}{ }dist/greetlab\PYGZus{}25020007136\PYGZhy{}0.1.0\PYGZhy{}py3\PYGZhy{}none\PYGZhy{}any.whl
+\PYG{n+nb}{cd}\PYG{+w}{ }/tmp
+/tmp/greetlab\PYGZhy{}venv/bin/sdt\PYGZhy{}greet\PYG{+w}{ }\PYGZhy{}\PYGZhy{}name\PYG{+w}{ }\PYG{l+m}{25020007136}
+\end{MintedVerbatim}

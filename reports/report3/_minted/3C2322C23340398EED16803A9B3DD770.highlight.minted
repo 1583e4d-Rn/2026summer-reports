@@ -1,0 +1,20 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{g+gu}{\PYGZsh{}\PYGZsh{}\PYGZsh{} Issue: 空姓名仍输出问候语}
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**环境**}：Windows 10, Python 3.10+
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**复现命令**}：sdt\PYGZhy{}greet \PYGZhy{}\PYGZhy{}name \PYGZdq{}   \PYGZdq{}
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**预期结果**}：报错并以非零状态码（如 2）退出。
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**实际结果**}：输出 \PYGZdq{}Hello,    !\PYGZdq{}，并以 0 退出。
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**未知信息**}：是否需考虑除空格外的其他不可见字符？(待确认)
+
+\PYG{g+gu}{\PYGZsh{}\PYGZsh{}\PYGZsh{} 提交信息}
+fix: 拦截纯空白姓名的无效输入
+
+当前 \PYG{l+s+sb}{`\PYGZhy{}\PYGZhy{}name`} 未校验空白字符，导致输出错误问候语且退出码为 0。
+通过剥离字符串并校验空值，若为空则调用 \PYG{l+s+sb}{`p.error()`} 强制退出并返回
+状态码 2，确保 CLI 交互严谨性。
+
+\PYG{g+gu}{\PYGZsh{}\PYGZsh{}\PYGZsh{} 评审意见}
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**行为**}：\PYG{l+s+sb}{`if not a.name:`} 无法拦截包含空格或制表符的输入。
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**风险**}：自动化调用方无法捕获错误，用户体验差。(Blocking)
+\PYG{k}{\PYGZhy{}}\PYG{+w}{ }\PYG{g+gs}{**建议动作**}：修改为 \PYG{l+s+sb}{`if not a.name.strip(): p.error(\PYGZdq{}Name cannot be blank\PYGZdq{})`}。
+\end{MintedVerbatim}

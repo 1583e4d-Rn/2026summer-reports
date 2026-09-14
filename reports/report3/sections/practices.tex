@@ -1,0 +1,104 @@
+\section{课后练习}
+
+\subsection{Packaging and Shipping Code}
+
+\subsubsection{用 pip 安装与卸载第三方包}
+pip 是 Python 的包管理工具，可在线安装、卸载并查看已安装的包，相关内容可参考课程资源中的 runoob Python 教程。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+pip install requests          # 安装包
+pip install requests==2.31.0  # 安装指定版本
+pip uninstall requests -y     # 卸载包
+pip list                      # 查看已安装的包
+\end{minted}
+
+\subsubsection{用 python -m build 构建 wheel 与 sdist}
+python -m build 会依据 pyproject.toml 同时生成 wheel 和源码包 sdist，是发布 Python 包的标准方式。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+python3 -m build
+# 生成 dist/*.whl 与 dist/*.tar.gz
+\end{minted}
+
+\subsubsection{从本地 wheel 安装包}
+在离线或已构建场景下，可直接用 pip 从本地 .whl 文件安装，而不依赖网络源。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+pip install dist/greetlab-25020007136-0.1.0-py3-none-any.whl
+\end{minted}
+
+\subsection{智能体编程}
+
+\subsubsection{测试驱动的智能体修复流程}
+先编写一个失败测试明确期望行为，再让智能体以该测试为验收标准修改代码，可形成可验证的修复闭环。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+# 1. 先写失败测试并运行，确认失败
+pytest test_cli.py
+# 2. 让智能体修改实现，以"运行 pytest 通过"为约束
+# 3. 再次运行测试，确认修复有效
+pytest test_cli.py
+\end{minted}
+
+\subsubsection{用 git diff 审查智能体的改动}
+智能体可能引入与目标无关的改动，提交前应使用 git diff 检查，撤销无关修改。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+git diff                # 查看工作区与暂存区的差异
+git diff --stat         # 仅查看改动文件与行数
+git checkout -- <file>  # 撤销某个文件的无关修改
+\end{minted}
+
+\subsection{不止于代码}
+
+\subsubsection{编写规范的 Git 提交信息}
+采用 Conventional Commits 约定，标题用祈使语气并标注类型（fix/feat/docs 等），正文说明问题与方案，便于历史回溯。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+git commit -m "fix: 拦截纯空白姓名的无效输入" \
+           -m "当前 --name 未校验空白字符，导致错误问候且退出码为 0。"
+\end{minted}
+
+\subsubsection{编写可复现的 Issue 报告}
+一份可执行的 Issue 应包含环境、复现命令、期望结果与实际结果，未知信息明确写“待确认”，便于他人快速定位。
+\begin{minted}[frame=single, fontsize=\small]{markdown}
+### Issue: 空姓名仍输出问候语
+- 环境：Windows 10, Python 3.10+
+- 复现命令：sdt-greet --name "   "
+- 预期结果：报错并以非零状态码退出。
+- 实际结果：输出问候语并以 0 退出。
+\end{minted}
+
+\subsection{Python 与 PyTorch}
+
+\subsubsection{PyTorch 张量的创建与运算}
+张量是 PyTorch 的基本数据结构，支持与 NumPy 类似的创建方式与广播运算，入门可参考课程资源中的 PyTorch 官方教程。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import torch
+a = torch.linspace(-1, 1, 5)   # 等间隔张量
+x = a.reshape(-1, 1)           # 改变形状
+y = 3 * x - 1                  # 广播运算
+print(y)
+\end{minted}
+
+\subsubsection{自动求导与梯度清零}
+PyTorch 通过 backward 自动计算梯度，但梯度默认累加，因此每次迭代前需调用 zero\_grad 清空。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import torch
+x = torch.tensor([2.0], requires_grad=True)
+y = x * x                       # y = x^2
+y.backward()                    # 自动求导 dy/dx = 2x
+print(x.grad)                   # tensor([4.])
+opt.zero_grad()                 # 清空累积的梯度
+\end{minted}
+
+\subsubsection{用 nn.Linear 搭建最小训练循环}
+nn.Linear 表示线性层，配合损失函数与优化器即可构成最小训练循环，三步完成一次参数更新。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import torch
+from torch import nn
+
+model = nn.Linear(1, 1)
+loss_fn = nn.MSELoss()
+opt = torch.optim.SGD(model.parameters(), lr=0.1)
+
+pred = model(x)
+loss = loss_fn(pred, y)
+opt.zero_grad()   # 清空梯度
+loss.backward()   # 反向传播
+opt.step()        # 更新参数
+\end{minted}

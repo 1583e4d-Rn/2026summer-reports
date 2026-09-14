@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{torch}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{torch}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{nn}
+
+\PYG{n}{model} \PYG{o}{=} \PYG{n}{nn}\PYG{o}{.}\PYG{n}{Linear}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{loss\PYGZus{}fn} \PYG{o}{=} \PYG{n}{nn}\PYG{o}{.}\PYG{n}{MSELoss}\PYG{p}{()}
+\PYG{n}{opt} \PYG{o}{=} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{optim}\PYG{o}{.}\PYG{n}{SGD}\PYG{p}{(}\PYG{n}{model}\PYG{o}{.}\PYG{n}{parameters}\PYG{p}{(),} \PYG{n}{lr}\PYG{o}{=}\PYG{l+m+mf}{0.1}\PYG{p}{)}
+
+\PYG{n}{pred} \PYG{o}{=} \PYG{n}{model}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{n}{loss} \PYG{o}{=} \PYG{n}{loss\PYGZus{}fn}\PYG{p}{(}\PYG{n}{pred}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)}
+\PYG{n}{opt}\PYG{o}{.}\PYG{n}{zero\PYGZus{}grad}\PYG{p}{()}   \PYG{c+c1}{\PYGZsh{} 清空梯度}
+\PYG{n}{loss}\PYG{o}{.}\PYG{n}{backward}\PYG{p}{()}   \PYG{c+c1}{\PYGZsh{} 反向传播}
+\PYG{n}{opt}\PYG{o}{.}\PYG{n}{step}\PYG{p}{()}        \PYG{c+c1}{\PYGZsh{} 更新参数}
+\end{MintedVerbatim}

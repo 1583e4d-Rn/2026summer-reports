@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{torch}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{tensor}\PYG{p}{([}\PYG{l+m+mf}{2.0}\PYG{p}{],} \PYG{n}{requires\PYGZus{}grad}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{x} \PYG{o}{*} \PYG{n}{x}                       \PYG{c+c1}{\PYGZsh{} y = x\PYGZca{}2}
+\PYG{n}{y}\PYG{o}{.}\PYG{n}{backward}\PYG{p}{()}                    \PYG{c+c1}{\PYGZsh{} 自动求导 dy/dx = 2x}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n}{grad}\PYG{p}{)}                   \PYG{c+c1}{\PYGZsh{} tensor([4.])}
+\PYG{n}{opt}\PYG{o}{.}\PYG{n}{zero\PYGZus{}grad}\PYG{p}{()}                 \PYG{c+c1}{\PYGZsh{} 清空累积的梯度}
+\end{MintedVerbatim}

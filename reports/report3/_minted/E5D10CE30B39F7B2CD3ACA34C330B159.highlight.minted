@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+mkdir\PYG{+w}{ }\PYGZhy{}p\PYG{+w}{ }q09/src/greetlab
+touch\PYG{+w}{ }q09/src/greetlab/\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}.py
+\end{MintedVerbatim}

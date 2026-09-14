@@ -1,0 +1,29 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{torch}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{torch}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{nn}
+
+\PYG{n}{torch}\PYG{o}{.}\PYG{n}{manual\PYGZus{}seed}\PYG{p}{(}\PYG{l+m+mi}{20260907}\PYG{p}{)}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{101}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{3} \PYG{o}{*} \PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+\PYG{n}{model} \PYG{o}{=} \PYG{n}{nn}\PYG{o}{.}\PYG{n}{Linear}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{loss\PYGZus{}fn} \PYG{o}{=} \PYG{n}{nn}\PYG{o}{.}\PYG{n}{MSELoss}\PYG{p}{()}
+\PYG{n}{opt} \PYG{o}{=} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{optim}\PYG{o}{.}\PYG{n}{SGD}\PYG{p}{(}\PYG{n}{model}\PYG{o}{.}\PYG{n}{parameters}\PYG{p}{(),} \PYG{n}{lr}\PYG{o}{=}\PYG{l+m+mf}{0.1}\PYG{p}{)}
+
+\PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{):}
+    \PYG{n}{pred} \PYG{o}{=} \PYG{n}{model}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+    \PYG{n}{loss} \PYG{o}{=} \PYG{n}{loss\PYGZus{}fn}\PYG{p}{(}\PYG{n}{pred}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)}
+    \PYG{n}{opt}\PYG{o}{.}\PYG{n}{zero\PYGZus{}grad}\PYG{p}{()}
+    \PYG{n}{loss}\PYG{o}{.}\PYG{n}{backward}\PYG{p}{()}
+    \PYG{n}{opt}\PYG{o}{.}\PYG{n}{step}\PYG{p}{()}
+
+\PYG{n}{model}\PYG{o}{.}\PYG{n}{eval}\PYG{p}{()}
+\PYG{k}{with} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{no\PYGZus{}grad}\PYG{p}{():}
+    \PYG{n}{final\PYGZus{}pred} \PYG{o}{=} \PYG{n}{model}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+    \PYG{n}{final\PYGZus{}loss} \PYG{o}{=} \PYG{n}{loss\PYGZus{}fn}\PYG{p}{(}\PYG{n}{final\PYGZus{}pred}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)}
+    \PYG{n}{weight} \PYG{o}{=} \PYG{n}{model}\PYG{o}{.}\PYG{n}{weight}\PYG{o}{.}\PYG{n}{item}\PYG{p}{()}
+    \PYG{n}{bias} \PYG{o}{=} \PYG{n}{model}\PYG{o}{.}\PYG{n}{bias}\PYG{o}{.}\PYG{n}{item}\PYG{p}{()}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Final Loss: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{final\PYGZus{}loss}\PYG{o}{.}\PYG{n}{item}\PYG{p}{()}\PYG{l+s+si}{:}\PYG{l+s+s2}{.6f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Weight: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{weight}\PYG{l+s+si}{:}\PYG{l+s+s2}{.4f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{, Bias: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{bias}\PYG{l+s+si}{:}\PYG{l+s+s2}{.4f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+
+\PYG{k}{assert} \PYG{n}{final\PYGZus{}loss}\PYG{o}{.}\PYG{n}{item}\PYG{p}{()} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.001}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Loss is too high!\PYGZdq{}}
+\end{MintedVerbatim}

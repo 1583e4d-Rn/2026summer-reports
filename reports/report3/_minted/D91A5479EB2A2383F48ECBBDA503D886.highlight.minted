@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} 1. 先写失败测试并运行，确认失败}
+pytest\PYG{+w}{ }test\PYGZus{}cli.py
+\PYG{c+c1}{\PYGZsh{} 2. 让智能体修改实现，以\PYGZdq{}运行 pytest 通过\PYGZdq{}为约束}
+\PYG{c+c1}{\PYGZsh{} 3. 再次运行测试，确认修复有效}
+pytest\PYG{+w}{ }test\PYGZus{}cli.py
+\end{MintedVerbatim}

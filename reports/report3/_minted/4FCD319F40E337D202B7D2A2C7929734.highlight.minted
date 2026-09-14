@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{sys}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{os}
+
+\PYG{c+c1}{\PYGZsh{} 将 q10/src 目录加入到 Python 搜索路径中}
+\PYG{n}{sys}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{abspath}\PYG{p}{(}\PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{dirname}\PYG{p}{(}\PYG{n+nv+vm}{\PYGZus{}\PYGZus{}file\PYGZus{}\PYGZus{}}\PYG{p}{),} \PYG{l+s+s1}{\PYGZsq{}src\PYGZsq{}}\PYG{p}{)))}
+
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pytest}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{greetlab.cli}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{main}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{test\PYGZus{}blank\PYGZus{}name\PYGZus{}exits\PYGZus{}with\PYGZus{}2}\PYG{p}{(}\PYG{n}{monkeypatch}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} 模拟命令行输入}
+    \PYG{n}{monkeypatch}\PYG{o}{.}\PYG{n}{setattr}\PYG{p}{(}\PYG{n}{sys}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}argv\PYGZsq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}sdt\PYGZhy{}greet\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZhy{}name\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}   \PYGZsq{}}\PYG{p}{])}
+    \PYG{k}{with} \PYG{n}{pytest}\PYG{o}{.}\PYG{n}{raises}\PYG{p}{(}\PYG{n+ne}{SystemExit}\PYG{p}{)} \PYG{k}{as} \PYG{n}{exc\PYGZus{}info}\PYG{p}{:}
+        \PYG{n}{main}\PYG{p}{()}
+    \PYG{c+c1}{\PYGZsh{} 验证退出码为 2}
+    \PYG{k}{assert} \PYG{n}{exc\PYGZus{}info}\PYG{o}{.}\PYG{n}{value}\PYG{o}{.}\PYG{n}{code} \PYG{o}{==} \PYG{l+m+mi}{2}
+\end{MintedVerbatim}

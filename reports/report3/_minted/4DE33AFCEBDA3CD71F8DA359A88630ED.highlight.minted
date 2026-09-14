@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }q09
+python3\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }build
+\end{MintedVerbatim}

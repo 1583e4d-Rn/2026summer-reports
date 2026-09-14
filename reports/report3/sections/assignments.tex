@@ -1,0 +1,217 @@
+\section{实验内容}
+
+\subsection{从源码构建并在干净环境安装 Wheel}
+本题要求从源码构建一个最小 Python 命令行包，并验证 wheel 的安装，详细如下：
+\begin{itemize}
+    \item 创建 src/greetlab/\_\_init\_\_.py、给定的 cli.py 和 pyproject.toml，并把“学号”替换为自己的学号。
+    \item 在已安装 build 工具的课程环境中运行 python -m build，生成 wheel。
+    \item 新建一个干净虚拟环境，只从生成的 wheel 安装。
+    \item 切换到 q09 之外运行 sdt-greet --name <学号>，确认输出正确。
+\end{itemize}
+
+给定内容：
+\begin{minted}[frame=single, fontsize=\small]{python}
+# src/greetlab/cli.py
+import argparse
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--name", required=True)
+    a = p.parse_args()
+    print(f"Hello, {a.name}!")
+\end{minted}
+
+\begin{minted}[frame=single, fontsize=\small]{ini}
+# pyproject.toml
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "greetlab-25020007136"
+version = "0.1.0"
+[project.scripts]
+sdt-greet = "greetlab.cli:main"
+\end{minted}
+
+\subsubsection*{创建项目结构}
+将“学号”替换为 25020007136，并创建包目录与空的 \texttt{\_\_init\_\_.py}：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+mkdir -p q09/src/greetlab
+touch q09/src/greetlab/__init__.py
+\end{minted}
+
+\subsubsection*{构建 wheel}
+在 q09 目录下运行 python -m build，生成 wheel：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+cd q09
+python3 -m build
+\end{minted}
+
+构建完成后生成 dist 下的 wheel，效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{q09_0}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q09_1}
+\end{figure}
+
+\subsubsection*{在干净环境安装并运行}
+新建一个干净虚拟环境，只从生成的 wheel 安装，并切换到 q09 之外运行：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+python3 -m venv /tmp/greetlab-venv
+/tmp/greetlab-venv/bin/pip install dist/greetlab_25020007136-0.1.0-py3-none-any.whl
+cd /tmp
+/tmp/greetlab-venv/bin/sdt-greet --name 25020007136
+\end{minted}
+
+输出 Hello, 25020007136!，效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q09_2}
+\end{figure}
+
+\subsection{让编程智能体进入可验证的修复循环}
+本题要求复用第 9 题的 greetlab 包，使用编程智能体完成一个小型测试驱动修复，详细如下：
+\begin{itemize}
+    \item 复制 q09 为 q10，添加一个失败测试：当 name 只含空白字符时，main 应以 SystemExit(2) 结束。
+    \item 先运行测试确认失败，再向编程智能体说明目标、约束和测试命令，要求它修改实现并运行测试。
+    \item 人工检查 diff，撤销无关修改，并再次运行测试。
+    \item 在 ai\_log.md 中用不超过 5 行记录核心提示、智能体改动和人工验证。
+\end{itemize}
+
+\subsubsection*{编写失败测试}
+复制 q09 为 q10，并添加空白姓名的失败测试 test\_cli.py：
+\begin{minted}[frame=single, fontsize=\small]{python}
+import sys
+import os
+
+# 将 q10/src 目录加入到 Python 搜索路径中
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+
+import pytest
+from greetlab.cli import main
+
+def test_blank_name_exits_with_2(monkeypatch):
+    # 模拟命令行输入
+    monkeypatch.setattr(sys, 'argv', ['sdt-greet', '--name', '   '])
+    with pytest.raises(SystemExit) as exc_info:
+        main()
+    # 验证退出码为 2
+    assert exc_info.value.code == 2
+\end{minted}
+
+先运行测试确认失败，效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q10_0}
+\end{figure}
+
+\subsubsection*{让智能体修复}
+向编程智能体说明目标（纯空白 name 应抛出 SystemExit(2)）、约束（不得破坏正常问候）和测试命令（pytest），要求其修改实现。智能体在 main 中补充了空白校验逻辑：
+\begin{minted}[frame=single, fontsize=\small]{python}
+import argparse
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--name", required=True)
+    a = p.parse_args()
+    if not a.name.strip():
+        p.error("--name 不能为纯空白字符")
+    print(f"Hello, {a.name}!")
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q10_1}
+\end{figure}
+
+\subsubsection*{人工审查与验证}
+审查 diff，确认无副作用修改后再次运行测试，测试通过；并用 ai\_log.md 简要记录：
+\begin{minted}[frame=single, fontsize=\small]{markdown}
+- 核心提示：让纯空白 name 抛出 SystemExit(2)。
+- 智能体改动：在 main 函数中增加 if not a.name.strip(): p.error(...)。
+- 人工验证：审查 diff 无副作用，pytest 测试通过（Exit code 2）。
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q10_2}
+\end{figure}
+
+\subsection{把“无法处理”的协作材料改成可执行信息}
+本题要求围绕“空姓名仍输出问候语”这一缺陷，改写三段质量较差的协作材料，详细如下：
+\begin{itemize}
+    \item 在 communication.md 中重写 Issue，包含环境、复现命令、期望结果和实际结果；未知信息写“待确认”。
+    \item 重写提交信息：标题使用祈使语气，正文说明问题和解决方案。
+    \item 重写评审意见：指出具体行为、风险和建议动作，并标注 Blocking、Suggestion 或 Nit。
+    \item 全文控制在 400 字以内，保持专业、简洁。
+\end{itemize}
+
+改写后的 communication.md 如下：
+\begin{minted}[frame=single, fontsize=\small]{markdown}
+### Issue: 空姓名仍输出问候语
+- **环境**：Windows 10, Python 3.10+
+- **复现命令**：sdt-greet --name "   "
+- **预期结果**：报错并以非零状态码（如 2）退出。
+- **实际结果**：输出 "Hello,    !"，并以 0 退出。
+- **未知信息**：是否需考虑除空格外的其他不可见字符？(待确认)
+
+### 提交信息
+fix: 拦截纯空白姓名的无效输入
+
+当前 `--name` 未校验空白字符，导致输出错误问候语且退出码为 0。
+通过剥离字符串并校验空值，若为空则调用 `p.error()` 强制退出并返回
+状态码 2，确保 CLI 交互严谨性。
+
+### 评审意见
+- **行为**：`if not a.name:` 无法拦截包含空格或制表符的输入。
+- **风险**：自动化调用方无法捕获错误，用户体验差。(Blocking)
+- **建议动作**：修改为 `if not a.name.strip(): p.error("Name cannot be blank")`。
+\end{minted}
+
+\subsection{修复一个可复现的线性回归训练循环}
+本题要求补全并完成一次 PyTorch CPU 训练，详细如下：
+\begin{itemize}
+    \item 补全训练循环，正确调用 zero\_grad、backward 和 step。
+    \item 训练后调用 model.eval()，并在 torch.no\_grad() 中计算最终损失。
+    \item 打印最终损失、weight 和 bias；最终损失应小于 0.001。
+    \item 不得直接把 weight 和 bias 赋值为 3 和 -1。
+\end{itemize}
+
+补全后的 train.py 如下：
+\begin{minted}[frame=single, fontsize=\small]{python}
+import torch
+from torch import nn
+
+torch.manual_seed(20260907)
+x = torch.linspace(-1, 1, 101).reshape(-1, 1)
+y = 3 * x - 1
+model = nn.Linear(1, 1)
+loss_fn = nn.MSELoss()
+opt = torch.optim.SGD(model.parameters(), lr=0.1)
+
+for _ in range(200):
+    pred = model(x)
+    loss = loss_fn(pred, y)
+    opt.zero_grad()
+    loss.backward()
+    opt.step()
+
+model.eval()
+with torch.no_grad():
+    final_pred = model(x)
+    final_loss = loss_fn(final_pred, y)
+    weight = model.weight.item()
+    bias = model.bias.item()
+    print(f"Final Loss: {final_loss.item():.6f}")
+    print(f"Weight: {weight:.4f}, Bias: {bias:.4f}")
+
+assert final_loss.item() < 0.001, "Loss is too high!"
+\end{minted}
+
+训练最终损失小于 0.001，weight 与 bias 分别收敛到约 3 和 -1。运行效果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q12}
+\end{figure}

@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}fix: 拦截纯空白姓名的无效输入\PYGZdq{}}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{           }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}当前 \PYGZhy{}\PYGZhy{}name 未校验空白字符，导致错误问候且退出码为 0。\PYGZdq{}}
+\end{MintedVerbatim}
