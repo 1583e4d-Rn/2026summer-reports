@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}实验内容}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}建立可执行的本地质量门禁}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}让 Make 只重建真正受影响的产物}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}把本地 API 数据转换为可读报告}{8}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}修复并交付一个陌生的小型工具仓库}{11}{subsection.1.4}%
+\contentsline {section}{\numberline {2}课后练习}{14}{section.2}%
+\contentsline {subsection}{\numberline {2.1}代码质量}{14}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}在 pyproject.toml 中配置 ruff 规则}{14}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}用 pytest 参数化测试减少重复}{14}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}用 pytest.raises 断言异常与退出码}{15}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}元编程：构建系统}{15}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}GNU Make 的自动变量}{15}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}用 .PHONY 声明伪目标}{15}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}大杂烩：API、jq 与 Markdown}{16}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}curl 的常用选项}{16}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}用 jq 筛选与排序 JSON}{16}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}用 jq -r 拼接 Markdown 表格}{16}{subsubsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.4}Python 与 CLI 约定}{16}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}用 argparse 定义必选参数}{16}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}计算文件的 SHA-256 校验和}{17}{subsubsection.2.4.2}%
+\contentsline {section}{\numberline {3}感悟}{17}{section.3}%

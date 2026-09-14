@@ -1,0 +1,105 @@
+\section{课后练习}
+
+\subsection{代码质量}
+
+\subsubsection{在 pyproject.toml 中配置 ruff 规则}
+ruff 的规则与格式化参数可在 pyproject.toml 中集中配置，避免在命令行反复指定。
+\begin{minted}[frame=single, fontsize=\small]{ini}
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = "test_*.py"
+\end{minted}
+
+\subsubsection{用 pytest 参数化测试减少重复}
+使用 pytest.mark.parametrize 可以对同一测试函数批量提供多组输入，避免复制粘贴。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import pytest
+
+@pytest.mark.parametrize("name", ["Alice", "Bob", "Carol"])
+def test_normal_names(name, capsys, monkeypatch):
+    monkeypatch.setattr("sys.argv", ["sdt-greet", "--name", name])
+    main()
+    assert f"Hello, {name}!" in capsys.readouterr().out
+\end{minted}
+
+\subsubsection{用 pytest.raises 断言异常与退出码}
+对会抛出异常的代码，用 pytest.raises 既能捕获异常，又能断言退出码，是测试 CLI 参数校验的常用方式。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import pytest
+
+def test_blank_name(monkeypatch):
+    monkeypatch.setattr(sys, "argv", ["sdt-greet", "--name", "   "])
+    with pytest.raises(SystemExit) as exc_info:
+        main()
+    assert exc_info.value.code == 2
+\end{minted}
+
+\subsection{元编程：构建系统}
+
+\subsubsection{GNU Make 的自动变量}
+自动变量 \verb|$@|、\verb|$<|、\verb|$^| 分别代表目标文件、第一个依赖和全部依赖，可让配方更通用。
+\begin{minted}[frame=single, fontsize=\small]{make}
+output.txt: input.txt
+	cat $< > $@      # $< 即 input.txt，$@ 即 output.txt
+\end{minted}
+
+\subsubsection{用 .PHONY 声明伪目标}
+当目标名与文件名同名时，make 可能误判其已是最新；用 .PHONY 声明后，每次都会执行该配方。
+\begin{minted}[frame=single, fontsize=\small]{make}
+.PHONY: all clean build
+all: build
+clean:
+	rm -rf dist/ *.egg-info
+\end{minted}
+
+\subsection{大杂烩：API、jq 与 Markdown}
+
+\subsubsection{curl 的常用选项}
+-f 在 HTTP 错误时静默失败，-s 关闭进度条，-o 保存到文件，三者组合适合脚本化的 API 调用。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+curl -fsS http://127.0.0.1:8000/packages.json
+curl -fsS http://127.0.0.1:8000/packages.json -o packages.json
+\end{minted}
+
+\subsubsection{用 jq 筛选与排序 JSON}
+jq 的 select 用于按条件过滤，sort\_by 可按一个或多个键排序，负号表示降序。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+jq '[.[] | select(.status == "active" and .downloads >= 100)]
+    | sort_by([-.downloads, .name])'
+\end{minted}
+
+\subsubsection{用 jq -r 拼接 Markdown 表格}
+-j 使用原始输出，配合字符串拼接可直接生成 Markdown 表格行。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+jq -r '.[] | "| \(.name) | \(.version) | \(.downloads) |"'
+\end{minted}
+
+\subsection{Python 与 CLI 约定}
+
+\subsubsection{用 argparse 定义必选参数}
+argparse 的 required=True 可声明必选参数，--help 由框架自动生成，符合常见 CLI 约定。
+\begin{minted}[frame=single, fontsize=\small]{python}
+import argparse
+
+p = argparse.ArgumentParser()
+p.add_argument("--name", required=True)
+a = p.parse_args()
+print(f"Hello, {a.name}!")
+\end{minted}
+
+\subsubsection{计算文件的 SHA-256 校验和}
+使用 sha256sum 或 Python 的 hashlib 计算文件摘要，可用于校验构建产物的完整性。
+\begin{minted}[frame=single, fontsize=\small]{bash}
+sha256sum dist/greetlab_25020007136-0.1.0-py3-none-any.whl
+\end{minted}
+
+\begin{minted}[frame=single, fontsize=\small]{python}
+import hashlib
+h = hashlib.sha256(open("file.whl", "rb").read())
+print(h.hexdigest())
+\end{minted}

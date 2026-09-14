@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }q15
+python3\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }http.server\PYG{+w}{ }\PYG{l+m}{8000}\PYG{+w}{ }\PYG{p}{\PYGZam{}}
+curl\PYG{+w}{ }\PYGZhy{}fsS\PYG{+w}{ }http://127.0.0.1:8000/packages.json
+\end{MintedVerbatim}

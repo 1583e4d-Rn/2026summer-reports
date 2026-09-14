@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+curl\PYG{+w}{ }\PYGZhy{}fsS\PYG{+w}{ }http://127.0.0.1:8000/packages.json
+curl\PYG{+w}{ }\PYGZhy{}fsS\PYG{+w}{ }http://127.0.0.1:8000/packages.json\PYG{+w}{ }\PYGZhy{}o\PYG{+w}{ }packages.json
+\end{MintedVerbatim}

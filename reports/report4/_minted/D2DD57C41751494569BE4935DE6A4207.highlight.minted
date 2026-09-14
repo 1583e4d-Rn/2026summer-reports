@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{[tool.ruff]}
+\PYG{n+na}{line\PYGZhy{}length}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{88}
+\PYG{n+na}{target\PYGZhy{}version}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}py313\PYGZdq{}}
+\PYG{k}{[tool.ruff.lint]}
+\PYG{n+na}{select}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{[\PYGZdq{}E\PYGZdq{}, \PYGZdq{}F\PYGZdq{}, \PYGZdq{}I\PYGZdq{}, \PYGZdq{}W\PYGZdq{}]}
+\PYG{k}{[tool.pytest.ini\PYGZus{}options]}
+\PYG{n+na}{testpaths}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{[\PYGZdq{}.\PYGZdq{}]}
+\PYG{n+na}{python\PYGZus{}files}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}test\PYGZus{}*.py\PYGZdq{}}
+\end{MintedVerbatim}

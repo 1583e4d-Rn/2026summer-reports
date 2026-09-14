@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{output.txt}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{input}.\PYG{n}{txt}
+\PYG{err}{\PYGZca{}\PYGZca{}Icat}\PYG{+w}{ }\PYG{k}{\PYGZdl{}\PYGZlt{}}\PYG{+w}{ }\PYG{err}{\PYGZgt{}}\PYG{+w}{ }\PYG{k}{\PYGZdl{}@}\PYG{+w}{      }\PYG{c}{\PYGZsh{} \PYGZdl{}\PYGZlt{} 即 input.txt，\PYGZdl{}@ 即 output.txt}
+\end{MintedVerbatim}

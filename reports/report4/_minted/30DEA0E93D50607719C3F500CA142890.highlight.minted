@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+jq\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}.[] | \PYGZdq{}| \PYGZbs{}(.name) | \PYGZbs{}(.version) | \PYGZbs{}(.downloads) |\PYGZdq{}\PYGZsq{}}
+\end{MintedVerbatim}

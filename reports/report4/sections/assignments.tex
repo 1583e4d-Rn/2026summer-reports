@@ -1,0 +1,299 @@
+\section{实验内容}
+
+\subsection{建立可执行的本地质量门禁}
+本题要求复用第 10 题的 greetlab 包，建立一个轻量本地质量检查，详细如下：
+\begin{itemize}
+    \item 复制 q10 为 q13；在 pyproject.toml 中加入 ruff 和 pytest 的最小配置。
+    \item 补充一个正常姓名测试和一个空白姓名测试，每个测试包含有效断言。
+    \item 运行 ruff format、ruff check 和 pytest，修复全部问题，不得全局忽略规则。
+    \item 编写 check.sh，依次执行格式检查、静态检查和 pytest；运行并保证返回 0。
+\end{itemize}
+
+\subsubsection*{配置 ruff 与 pytest}
+在 pyproject.toml 中加入 ruff 的规则配置与 pytest 的测试路径配置：
+\begin{minted}[frame=single, fontsize=\small]{ini}
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "greetlab-25020007136"
+version = "0.1.0"
+[project.scripts]
+sdt-greet = "greetlab.cli:main"
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = "test_*.py"
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q13_0}
+\end{figure}
+
+\subsubsection*{补充测试}
+补充正常姓名与空白姓名两个测试，每个测试都包含有效断言：
+\begin{minted}[frame=single, fontsize=\small]{python}
+import os
+import sys
+
+# 将 q13/src 目录加入到 Python 搜索路径中
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src")))
+
+import pytest
+
+from greetlab.cli import main
+
+
+def test_blank_name_exits_with_2(monkeypatch):
+    # 模拟命令行输入
+    monkeypatch.setattr(sys, "argv", ["sdt-greet", "--name", "   "])
+    with pytest.raises(SystemExit) as exc_info:
+        main()
+    # 验证退出码为 2
+    assert exc_info.value.code == 2
+
+
+def test_normal_name(monkeypatch, capsys):
+    """测试正常姓名，应输出 Hello 问候语并正常退出。"""
+    monkeypatch.setattr(sys, "argv", ["sdt-greet", "--name", "Alice"])
+    main()
+
+    captured = capsys.readouterr()
+    assert "Hello, Alice!" in captured.out
+
+
+def test_blank_name(monkeypatch, capsys):
+    """测试纯空白姓名，应以 SystemExit(2) 结束。"""
+    monkeypatch.setattr(sys, "argv", ["sdt-greet", "--name", "   "])
+    with pytest.raises(SystemExit) as exc_info:
+        main()
+
+    assert exc_info.value.code == 2
+
+    captured = capsys.readouterr()
+    assert "error" in captured.err.lower()
+\end{minted}
+
+\subsubsection*{编写 check.sh 并运行}
+编写 check.sh 依次执行格式检查、静态检查与测试，并保证返回 0：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+set -e
+
+ruff format
+ruff check --fix
+pytest
+\end{minted}
+
+运行结果如下：
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q13_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q13_2}
+\end{figure}
+
+\subsection{让 Make 只重建真正受影响的产物}
+本题要求编写 Makefile，只重建真正受影响的产物，详细如下：
+\begin{itemize}
+    \item 创建给定的 data.csv、stats.py、build\_report.py 和 report.md。
+    \item 编写 Makefile，包含 all、stats.txt、report.txt 和 clean；准确列出数据文件、脚本和中间产物依赖，并把 all、clean 声明为 .PHONY。
+    \item 验证首次 make 生成两个产物；第二次无改动时不执行配方。
+    \item touch data.csv 后再次 make，确认重新生成；clean 只删除生成物。
+\end{itemize}
+
+给定内容：
+\begin{minted}[frame=single, fontsize=\small]{python}
+# data.csv
+name,value
+alpha,2
+beta,3
+gamma,5
+
+# stats.py
+import csv
+with open("data.csv") as f:
+    total = sum(int(r["value"]) for r in csv.DictReader(f))
+open("stats.txt", "w").write(str(total))
+
+# build_report.py
+text = open("report.md").read()
+total = open("stats.txt").read()
+open("report.txt", "w").write(f"{text}\nTotal: {total}\n")
+
+# report.md
+# Data Report
+\end{minted}
+
+\subsubsection*{编写 Makefile}
+将 all、clean 声明为 .PHONY，并为两个产物准确列出依赖：
+\begin{minted}[frame=single, fontsize=\small]{make}
+# 声明伪目标，防止目录下有同名文件导致 make 误判
+.PHONY: all clean
+
+# 默认目标：依赖于两个最终产物
+all: stats.txt report.txt
+
+# stats.txt 依赖于源数据 data.csv 和脚本 stats.py
+stats.txt: data.csv stats.py
+	python3 stats.py
+
+# report.txt 依赖于中间产物 stats.txt、脚本 build_report.py 以及模板文件 report.md
+report.txt: stats.txt build_report.py report.md
+	python3 build_report.py
+
+# 清理规则：只删除生成的产物，不删除源文件
+clean:
+	rm -f stats.txt report.txt
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q14}
+\end{figure}
+
+\subsection{把本地 API 数据转换为可读报告}
+本题要求创建本地 HTTP 服务，再用 curl 与 jq 生成 Markdown 报告，详细如下：
+\begin{itemize}
+    \item 把给定 JSON 保存为 packages.json，并在 q15 目录运行 python -m http.server 8000。
+    \item 使用 curl -fsS 获取 http://127.0.0.1:8000/packages.json。
+    \item 使用 jq 筛选 status 为 active 且 downloads 不少于 100 的记录，并按 downloads 降序、name 升序排列。
+    \item 编写 api\_report.sh，把结果生成 summary.md，包含标题和 name/version/downloads 三列表格。
+\end{itemize}
+
+给定 JSON：
+\begin{minted}[frame=single, fontsize=\small]{json}
+[
+  {"name":"alpha","status":"active","downloads":120,"version":"1.2.0"},
+  {"name":"beta","status":"inactive","downloads":900,"version":"2.0.0"},
+  {"name":"gamma","status":"active","downloads":450,"version":"1.5.1"},
+  {"name":"delta","status":"active","downloads":450,"version":"0.9.0"},
+  {"name":"epsilon","status":"active","downloads":80,"version":"3.1.0"}
+]
+\end{minted}
+
+\subsubsection*{启动本地服务并获取数据}
+启动 HTTP 服务，再用 curl 获取数据：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+cd q15
+python3 -m http.server 8000 &
+curl -fsS http://127.0.0.1:8000/packages.json
+\end{minted}
+
+\subsubsection*{编写 api\_report.sh}
+使用 jq 筛选并排序，生成 summary.md：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+#!/usr/bin/env bash
+
+URL="http://127.0.0.1:8000/packages.json"
+OUTPUT="summary.md"
+
+echo "# API Package Report" > "$OUTPUT"
+echo "" >> "$OUTPUT"
+echo "| name | version | downloads |" >> "$OUTPUT"
+echo "|------|---------|-----------|" >> "$OUTPUT"
+
+curl -fsS "$URL" | jq -r '[.[] | select(.status == "active" and .downloads >= 100)] | sort_by([-.downloads, .name])[] | "| \(.name) | \(.version) | \(.downloads) |"' >> "$OUTPUT"
+\end{minted}
+
+生成的 summary.md 内容如下：
+\begin{verbatim}
+# API Package Report
+
+| name | version | downloads |
+|------|---------|-----------|
+| delta | 0.9.0 | 450 |
+| gamma | 1.5.1 | 450 |
+| alpha | 1.2.0 | 120 |
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q15}
+\end{figure}
+
+\subsection{修复并交付一个陌生的小型工具仓库}
+本题要求复用第 13 题项目，完成一次综合检查，详细如下：
+\begin{itemize}
+    \item 复制 q13 为 q16 并初始化/继续使用 Git。
+    \item 把问候语实现临时改成始终返回字面量 Hello, name!，运行 check.sh 确认测试失败；随后定位并修复。
+    \item 编写最小 Makefile，包含 check、build 和 clean；check 调用 check.sh，build 生成 wheel。
+    \item 运行 make check 和 make build，计算 wheel 的 SHA-256，并把最终改动提交为一个内容聚焦的 Git 提交。
+\end{itemize}
+
+\subsubsection*{初始化仓库并制造失败}
+复制 q13 为 q16，初始化 Git，把实现临时改成始终返回字面量，运行 check.sh 确认测试失败：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+cp -r q13 q16 && cd q16
+git init
+./check.sh   # 临时改坏后应失败
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q16_0}
+\end{figure}
+
+定位并恢复 cli.py 中的空白校验逻辑后，make check 通过：
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q16_1}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q16_2}
+\end{subfigure}
+\end{figure}
+
+\subsubsection*{编写 Makefile 并构建}
+编写最小 Makefile，check 调用 check.sh，build 生成 wheel：
+\begin{minted}[frame=single, fontsize=\small]{make}
+.PHONY: check build clean
+
+check:
+	./check.sh
+
+build:
+	python3 -m build
+
+clean:
+	rm -rf dist/ build/ *.egg-info .pytest_cache
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+\end{minted}
+
+\begin{minted}[frame=single, fontsize=\small]{bash}
+make check
+make build
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{q16_3}
+\end{figure}
+
+\subsubsection*{校验和并提交}
+计算 wheel 的 SHA-256，并把最终改动提交为内容聚焦的 Git 提交：
+\begin{minted}[frame=single, fontsize=\small]{bash}
+sha256sum dist/greetlab_25020007136-0.1.0-py3-none-any.whl
+git add -A
+git commit -m "fix: 恢复空白姓名校验并补齐质量门禁"
+\end{minted}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q16_4}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=\linewidth]{q16_5}
+\end{subfigure}
+\end{figure}

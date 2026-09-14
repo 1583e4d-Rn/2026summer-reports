@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+sha256sum\PYG{+w}{ }dist/greetlab\PYGZus{}25020007136\PYGZhy{}0.1.0\PYGZhy{}py3\PYGZhy{}none\PYGZhy{}any.whl
+git\PYG{+w}{ }add\PYG{+w}{ }\PYGZhy{}A
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}fix: 恢复空白姓名校验并补齐质量门禁\PYGZdq{}}
+\end{MintedVerbatim}

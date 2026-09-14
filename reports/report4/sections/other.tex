@@ -1,0 +1,18 @@
+\section{感悟}
+通过第四周的实验练习，形成以下认识和体会：
+\begin{itemize}
+\item 质量门禁的价值：把 ruff 与 pytest 的配置固化到 pyproject.toml，再用一个 check.sh 串起格式、静态检查与测试，能让“是否可交付”变得自动化、可重复，而不再依赖个人记忆。
+\item 构建系统的依赖观：Makefile 的核心是准确描述产物与来源之间的依赖关系，从而只重建真正受影响的部分；.PHONY 则用于区分伪目标与真实文件名，避免误判。
+\item 命令行工具的组合能力：curl 负责取数、jq 负责筛选与排序、Markdown 负责呈现，三者通过管道串联即可把一份 JSON 变成可读报告，体现了 Unix 工具哲学。
+\item 综合交付的完整链路：从临时制造失败、定位修复，到 make check、make build、计算 SHA-256 校验和，再到内容聚焦的 Git 提交，串起了一个陌生仓库从“不确定状态”到“可交付”的全过程。
+\end{itemize}
+
+代码质量、元编程与命令行数据处理的共同点，在于用约定和自动化把重复性、易出错的人工步骤转化为可验证的流程。这也是“不止于代码”的意义所在：衡量工程能力的，不仅是能否写出正确实现，更是能否建立一套让正确性可复现、可校验、可交付的机制。
+
+
+\subsection*{Github提交}
+此处上传Github提交记录。(报告于完成后上传)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{git}
+\end{figure}

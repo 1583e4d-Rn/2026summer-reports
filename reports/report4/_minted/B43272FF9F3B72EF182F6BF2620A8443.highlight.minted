@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+cp\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }q13\PYG{+w}{ }q16\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nb}{cd}\PYG{+w}{ }q16
+git\PYG{+w}{ }init
+./check.sh\PYG{+w}{   }\PYG{c+c1}{\PYGZsh{} 临时改坏后应失败}
+\end{MintedVerbatim}

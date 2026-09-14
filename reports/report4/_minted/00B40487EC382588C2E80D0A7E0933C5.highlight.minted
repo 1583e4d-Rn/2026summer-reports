@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{set}\PYG{+w}{ }\PYGZhy{}e
+
+ruff\PYG{+w}{ }format
+ruff\PYG{+w}{ }check\PYG{+w}{ }\PYGZhy{}\PYGZhy{}fix
+pytest
+\end{MintedVerbatim}

@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{[build\PYGZhy{}system]}
+\PYG{n+na}{requires}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{[\PYGZdq{}setuptools\PYGZgt{}=68\PYGZdq{}]}
+\PYG{n+na}{build\PYGZhy{}backend}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}setuptools.build\PYGZus{}meta\PYGZdq{}}
+\PYG{k}{[project]}
+\PYG{n+na}{name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}greetlab\PYGZhy{}25020007136\PYGZdq{}}
+\PYG{n+na}{version}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}0.1.0\PYGZdq{}}
+\PYG{k}{[project.scripts]}
+\PYG{n+na}{sdt\PYGZhy{}greet}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}greetlab.cli:main\PYGZdq{}}
+\PYG{k}{[tool.ruff]}
+\PYG{n+na}{line\PYGZhy{}length}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{88}
+\PYG{n+na}{target\PYGZhy{}version}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}py313\PYGZdq{}}
+\PYG{k}{[tool.ruff.lint]}
+\PYG{n+na}{select}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{[\PYGZdq{}E\PYGZdq{}, \PYGZdq{}F\PYGZdq{}, \PYGZdq{}I\PYGZdq{}, \PYGZdq{}W\PYGZdq{}]}
+\PYG{k}{[tool.pytest.ini\PYGZus{}options]}
+\PYG{n+na}{testpaths}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{[\PYGZdq{}.\PYGZdq{}]}
+\PYG{n+na}{python\PYGZus{}files}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}test\PYGZus{}*.py\PYGZdq{}}
+\end{MintedVerbatim}

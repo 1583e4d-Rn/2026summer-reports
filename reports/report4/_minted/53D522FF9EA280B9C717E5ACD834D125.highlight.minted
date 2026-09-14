@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env bash}
+
+\PYG{n+nv}{URL}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}http://127.0.0.1:8000/packages.json\PYGZdq{}}
+\PYG{n+nv}{OUTPUT}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}summary.md\PYGZdq{}}
+
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZsh{} API Package Report\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}OUTPUT}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYGZgt{}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}OUTPUT}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}| name | version | downloads |\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYGZgt{}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}OUTPUT}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}|\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}|\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}|\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}|\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYGZgt{}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}OUTPUT}\PYG{l+s+s2}{\PYGZdq{}}
+
+curl\PYG{+w}{ }\PYGZhy{}fsS\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}URL}\PYG{l+s+s2}{\PYGZdq{}}\PYG{+w}{ }\PYG{p}{|}\PYG{+w}{ }jq\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}[.[] | select(.status == \PYGZdq{}active\PYGZdq{} and .downloads \PYGZgt{}= 100)] | sort\PYGZus{}by([\PYGZhy{}.downloads, .name])[] | \PYGZdq{}| \PYGZbs{}(.name) | \PYGZbs{}(.version) | \PYGZbs{}(.downloads) |\PYGZdq{}\PYGZsq{}}\PYG{+w}{ }\PYGZgt{}\PYGZgt{}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}OUTPUT}\PYG{l+s+s2}{\PYGZdq{}}
+\end{MintedVerbatim}

@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pytest}
+
+\PYG{n+nd}{@pytest}\PYG{o}{.}\PYG{n}{mark}\PYG{o}{.}\PYG{n}{parametrize}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}Alice\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Bob\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Carol\PYGZdq{}}\PYG{p}{])}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{test\PYGZus{}normal\PYGZus{}names}\PYG{p}{(}\PYG{n}{name}\PYG{p}{,} \PYG{n}{capsys}\PYG{p}{,} \PYG{n}{monkeypatch}\PYG{p}{):}
+    \PYG{n}{monkeypatch}\PYG{o}{.}\PYG{n}{setattr}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}sys.argv\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}sdt\PYGZhy{}greet\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}name\PYGZdq{}}\PYG{p}{,} \PYG{n}{name}\PYG{p}{])}
+    \PYG{n}{main}\PYG{p}{()}
+    \PYG{k}{assert} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Hello, }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{name}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{!\PYGZdq{}} \PYG{o+ow}{in} \PYG{n}{capsys}\PYG{o}{.}\PYG{n}{readouterr}\PYG{p}{()}\PYG{o}{.}\PYG{n}{out}
+\end{MintedVerbatim}

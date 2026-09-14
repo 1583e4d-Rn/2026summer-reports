@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{.PHONY}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{check} \PYG{n}{build} \PYG{n}{clean}
+
+\PYG{n+nf}{check}\PYG{o}{:}
+\PYG{err}{\PYGZca{}\PYGZca{}I./check.sh}
+
+\PYG{n+nf}{build}\PYG{o}{:}
+\PYG{err}{\PYGZca{}\PYGZca{}Ipython3}\PYG{+w}{ }\PYG{err}{\PYGZhy{}m}\PYG{+w}{ }\PYG{err}{build}
+
+\PYG{n+nf}{clean}\PYG{o}{:}
+\PYG{err}{\PYGZca{}\PYGZca{}Irm}\PYG{+w}{ }\PYG{err}{\PYGZhy{}rf}\PYG{+w}{ }\PYG{err}{dist/}\PYG{+w}{ }\PYG{err}{build/}\PYG{+w}{ }\PYG{err}{*.egg\PYGZhy{}info}\PYG{+w}{ }\PYG{err}{.pytest\PYGZus{}cache}
+\PYG{err}{\PYGZca{}\PYGZca{}Ifind}\PYG{+w}{ }\PYG{err}{.}\PYG{+w}{ }\PYG{err}{\PYGZhy{}type}\PYG{+w}{ }\PYG{err}{d}\PYG{+w}{ }\PYG{err}{\PYGZhy{}name}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZus{}pycache\PYGZus{}\PYGZus{}\PYGZdq{}}\PYG{+w}{ }\PYG{err}{\PYGZhy{}exec}\PYG{+w}{ }\PYG{err}{rm}\PYG{+w}{ }\PYG{err}{\PYGZhy{}rf}\PYG{+w}{ }\PYG{err}{\PYGZob{}\PYGZcb{}}\PYG{+w}{ }\PYG{err}{+}
+\end{MintedVerbatim}

@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pytest}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{test\PYGZus{}blank\PYGZus{}name}\PYG{p}{(}\PYG{n}{monkeypatch}\PYG{p}{):}
+    \PYG{n}{monkeypatch}\PYG{o}{.}\PYG{n}{setattr}\PYG{p}{(}\PYG{n}{sys}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}argv\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}sdt\PYGZhy{}greet\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}name\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}   \PYGZdq{}}\PYG{p}{])}
+    \PYG{k}{with} \PYG{n}{pytest}\PYG{o}{.}\PYG{n}{raises}\PYG{p}{(}\PYG{n+ne}{SystemExit}\PYG{p}{)} \PYG{k}{as} \PYG{n}{exc\PYGZus{}info}\PYG{p}{:}
+        \PYG{n}{main}\PYG{p}{()}
+    \PYG{k}{assert} \PYG{n}{exc\PYGZus{}info}\PYG{o}{.}\PYG{n}{value}\PYG{o}{.}\PYG{n}{code} \PYG{o}{==} \PYG{l+m+mi}{2}
+\end{MintedVerbatim}

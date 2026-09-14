@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{.PHONY}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{all} \PYG{n}{clean} \PYG{n}{build}
+\PYG{n+nf}{all}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{build}
+\PYG{n+nf}{clean}\PYG{o}{:}
+\PYG{err}{\PYGZca{}\PYGZca{}Irm}\PYG{+w}{ }\PYG{err}{\PYGZhy{}rf}\PYG{+w}{ }\PYG{err}{dist/}\PYG{+w}{ }\PYG{err}{*.egg\PYGZhy{}info}
+\end{MintedVerbatim}

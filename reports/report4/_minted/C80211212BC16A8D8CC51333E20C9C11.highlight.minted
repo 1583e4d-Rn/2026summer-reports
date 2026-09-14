@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+make\PYG{+w}{ }check
+make\PYG{+w}{ }build
+\end{MintedVerbatim}
